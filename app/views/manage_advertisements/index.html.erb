@@ -1,0 +1,42 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">advertisement</div>
+    <div class="selectCity"><img src="assets/addnew.png" border="0"><%= link_to 'Add Advertisement', new_manage_advertisement_path %>
+    </div>
+  </div>
+  <div class="paged-data">
+    <div class="tabIner">
+      <table cellpadding="0" cellspacing="0" width="100%" class="table">
+        <thead>
+          <tr class="tableHdIner alt-row">
+              <td width="10%" class="first">S. NO</td>
+              <td width="10%">Right Add Image</td>
+              <td width="10%">Mid Add Image</td>
+              <td width="10%">Right Add URL</td>
+              <td width="10%">Mid Add URL</td>
+              <td width="12%">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @manage_advertisements.each do |manage_advertisement| %>
+            <tr class="tableDet">
+                <td class="first"><%= manage_advertisement.id %></td>
+                <td><%= image_tag(manage_advertisement.right_add_image, :height => 25, :width => 25) if manage_advertisement.right_add_image.present? %></td>
+                <td><%= image_tag(manage_advertisement.mid_add_image, :height => 25, :width => 25) if manage_advertisement.mid_add_image.present? %></td>
+                <td><%= manage_advertisement.right_url %></td>
+                <td><%= manage_advertisement.mid_url %></td>
+                <td align="center">
+                  <%= link_to image_tag("view.gif", :title => "View"), manage_advertisement %>&nbsp;&nbsp;
+                  <%= link_to image_tag("edit.png", :title => "Edit"), edit_manage_advertisement_path(manage_advertisement) %>&nbsp;&nbsp;
+                  <%= link_to image_tag("delete.png", :title => "Delete"), manage_advertisement, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+</div>
+</div>

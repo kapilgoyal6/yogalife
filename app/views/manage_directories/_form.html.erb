@@ -1,0 +1,80 @@
+<%= form_for(@manage_directory) do |f| %>
+  <% if @manage_directory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_directory.errors.count, "error") %> prohibited this manage_directory from being saved:</h2>
+
+      <ul>
+      <% @manage_directory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :sub_category, 'Select Sub Category' %>
+  </div>
+    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :country, 'Select Country' %>
+  </div>
+    <%= f.collection_select :country, Country.all,  :country, :country %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :city, 'Select City' %>
+  </div>
+    <%= f.collection_select :city, City.all,  :city, :city %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :business_name, 'Business Name' %>
+  </div>
+    <%= f.text_field :business_name %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :location %>
+  </div>
+    <%= f.text_field :location %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :phone_no, 'Phone No.' %>
+  </div>
+    <%= f.text_field :phone_no %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :email, 'Email Id' %>
+  </div>
+    <%= f.text_field :email %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :website %>
+  </div>
+    <%= f.text_field :website %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+
+<% end %>

@@ -1,0 +1,41 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Article</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Title:</b></div>
+          <div class="fld"><%= @manage_article.title %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Created By:</b></div>
+          <div class="fld"><%= @manage_article.created_by %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>article Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_article.image, :width => 300) if @manage_article.image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Description:</b></div>
+          <div class="fld"><%= sanitize(@manage_article.desc) %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_manage_article_path(@manage_article) %> |
+<%= link_to 'Back', manage_articles_path %>

@@ -1,0 +1,54 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Nourish</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Title:</b></div>
+          <div class="fld"><%= @manage_nourish.title %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Sub Category:</b></div>
+          <div class="fld"><%= @manage_nourish.sub_category %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Created By:</b></div>
+          <div class="fld"><%= @manage_nourish.created_by %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Website:</b></div>
+          <div class="fld"><%= @manage_nourish.website %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_nourish.image, :width => 300) if @manage_nourish.image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Description:</b></div>
+          <div class="fld"><%= @manage_nourish.desc %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_manage_nourish_path(@manage_nourish) %> |
+<%= link_to 'Back', manage_nourishes_path %>

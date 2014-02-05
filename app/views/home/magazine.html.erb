@@ -1,0 +1,30 @@
+<div class="bradcrumb"><a href="home">Home</a><span>Magazine</span></div>
+
+<!-- SORT BY -->
+
+<div class="sortBy padTN clearfix">
+	<div class="sortTxt">Sort by</div>
+    <div class="sortSelBg">
+        <input type="text" readonly="" class="sortYearInput" value="2014" id="drop_1">
+        <select class="sortYearSlct" id="year_list" onchange="document.getElementById('drop_1').value = this.value;">
+			<option value="Select">Select</option>
+			<option>2013</option>
+			<option>2014</option>
+		</select>
+    </div>
+	<div class="filterYearBtn"><input type="button" value="FILTER" class="formBtn" onclick="searchall();"></div>                
+</div>
+
+<!-- MAGAZINES -->
+
+<div>
+	<ul class="magzineList">
+		<% @magazines.each do |magazine| %>
+	    	<li>
+				<%= link_to image_tag(magazine.cover_image, :height => 150), :controller => 'home', :action => 'viewmagazine', :id => magazine.id %><br><%= magazine.issue_date.strftime("%B") %> Issue</a>
+				
+			</li>
+		<% end %>
+    </ul>
+	<div class="clr"></div>
+</div>

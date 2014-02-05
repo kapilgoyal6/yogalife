@@ -1,0 +1,44 @@
+<%= form_for(@subcategory) do |f| %>
+  <% if @subcategory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subcategory.errors.count, "error") %> prohibited this subcategory from being saved:</h2>
+
+      <ul>
+      <% @subcategory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+      <div class="label">
+        <%= f.label :cat_name, 'Category Name' %>
+      </div>
+        <%= f.select :cat_name, options_for_select(%w[POSE NOURISH HEAL GLOW RETREAT GREEN EVENTS DIRECTORY]) %>
+      <div class="clr"></div><br/>
+
+      <div class="label">
+        <%= f.label :sub_cat_name, 'Sub Category Name' %>
+      </div>
+        <%= f.text_field :sub_cat_name %>
+      <div class="clr"></div><br/>
+
+      <div class="label">
+        <%= f.label :desc, 'Description' %>
+      </div>
+      <div class="fld">
+        <%= f.text_area :desc %>
+      </div>
+      <div class="clr"></div><br/>
+
+      <div class="actions">
+        <%= f.submit 'Submit' %>
+      </div>
+
+  </div>
+
+<% end %>

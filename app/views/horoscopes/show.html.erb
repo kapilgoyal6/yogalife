@@ -1,0 +1,60 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Monthly Horoscopes</div>
+      </div>
+      <div class="adminform">
+        <div class="left">
+
+          <div class="fldline">
+            <div class="label"><b>Title:</b></div>
+            <div class="fld"><%= @horoscope.title %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>SubTitle:</b></div>
+            <div class="fld"><%= @horoscope.subtitle %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>Start Date:</b></div>
+            <div class="fld"><%= @horoscope.start_date %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>End Date:</b></div>
+            <div class="fld"><%= @horoscope.end_date %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>Logo:</b></div>
+            <div class="fld"><%= image_tag(@horoscope.logo_url, :width => 300) if @horoscope.logo.present? %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>Background Image:</b></div>
+            <div class="fld"><%= image_tag(@horoscope.background_url, :width => 300) if @horoscope.background.present? %></div>
+            <div class="clr"></div>
+          </div>
+
+          <div class="fldline">
+            <div class="label"><b>Description:</b></div>
+            <div class="fld"><%= truncate( raw( sanitize(@horoscope.desc) ), :length => 1000, :omission => "...") %></div>
+            <div class="clr"></div>
+          </div>
+
+        </div>
+
+        <div class="clr"></div>
+      </div>
+
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_horoscope_path(@horoscope) %> |
+<%= link_to 'Back', horoscopes_path %>

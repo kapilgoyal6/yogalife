@@ -1,0 +1,48 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Pose</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Title:</b></div>
+          <div class="fld"><%= @manage_pose.title %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Subcategory:</b></div>
+          <div class="fld"><%= @manage_pose.sub_category %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Author:</b></div>
+          <div class="fld"><%= @manage_pose.author %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_pose.pose_image, :width => 300) if @manage_pose.pose_image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Description:</b></div>
+          <div class="fld"><%= @manage_pose.desc %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_manage_pose_path(@manage_pose) %> |
+<%= link_to 'Back', manage_poses_path %>

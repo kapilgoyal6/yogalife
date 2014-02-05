@@ -1,0 +1,50 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">Monthly Horoscopes</div>
+    <div class="selectCity"><img src="assets/addnew.png" border="0"><%= link_to 'Add Monthly Horoscopes', new_horoscope_path %>
+    </div>
+  </div>
+
+
+<div class="paged-data">
+    <div class="tabIner">
+
+<table cellpadding="0" cellspacing="0" width="100%" class="table">
+  <thead>
+    <tr class="tableHdIner alt-row">
+      <td width="10%" class="first">S. NO</td>
+      <td>Title</td>
+      <td width="10%">Logo Image</td>
+      <td width="10%">Background Image</td>
+      <td width="20%">Description</td>
+      <td>Start Date</td>
+      <td>End Date</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @horoscopes.each do |horoscope| %>
+      <tr class="tableDet">
+        <td class="first"><%= horoscope.id %></td>
+        <td><%= horoscope.title %></td>
+        <td><%= image_tag(horoscope.logo_url, :width => 25) if horoscope.logo.present? %></td>
+        <td><%= image_tag(horoscope.background_url, :width => 25) if horoscope.background.present? %></td>
+        <td><%= truncate( raw( sanitize(horoscope.desc) ), :length => 100, :omission => "...") %></td>
+        <td><%= horoscope.start_date %></td>
+        <td><%= horoscope.end_date %></td>
+        <td align="center">
+          <%= link_to image_tag("view.gif", :title => "View"), horoscope %>&nbsp;&nbsp;
+          <%= link_to image_tag("edit.png", :title => "Edit"), edit_horoscope_path(horoscope) %>&nbsp;&nbsp;
+          <%= link_to image_tag("delete.png", :title => "Delete"), horoscope, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>

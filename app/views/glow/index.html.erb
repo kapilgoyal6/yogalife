@@ -1,0 +1,16 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Glow</span> </div>
+<div>
+	<ul class="articleBox">
+		<% @manage_glows.each do |glow| %>
+	    	<li>
+                <div class="articleLeft"><%= link_to image_tag(glow.image, :height => 150), :controller => 'home', :action => 'viewglow', :id => glow.id %></div>
+                <div class="articleRight">
+                    <div class="hd"><%= link_to glow.title, :controller => 'home', :action => 'viewglow', :id => glow.id %></div>
+                    <div class="by">By <%= glow.created_by %>&nbsp;&nbsp;<%= glow.updated_at.strftime("%d %B %Y") %></div>
+                    <div><%= glow.desc %></div>
+                </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>

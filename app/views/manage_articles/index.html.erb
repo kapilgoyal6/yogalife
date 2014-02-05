@@ -1,0 +1,46 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">Article</div>
+    <div class="selectCity"><img src="assets/addnew.png" border="0"><%= link_to 'Add Article', new_manage_article_path %>
+    </div>
+  </div>
+  <div class="paged-data">
+    <div class="tabIner">
+      <table cellpadding="0" cellspacing="0" width="100%" class="table">
+        <thead>
+          <tr class="tableHdIner alt-row">
+              <td width="10%" class="first">S. NO</td>
+              <td width="15%">Title</td>
+              <td width="10%">Image</td>
+              <td width="10%">Created By</td>
+              <td width="10%">Description</td>
+              <td width="10%">Created</td>
+              <td width="10%">Updated</td>
+              <td width="12%">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @manage_articles.each do |manage_article| %>
+            <tr class="tableDet">
+                <td class="first"><%= manage_article.id %></td>
+                <td><%= manage_article.title %></td>
+                <td><%= image_tag(manage_article.image, :width => 25) if manage_article.image.present? %></td>
+                <td><%= manage_article.created_by %></td>
+                <td><%= truncate( raw( sanitize(manage_article.desc) ), :length => 100) %></td>
+                <td><%= manage_article.created_at %></td>
+                <td><%= manage_article.updated_at %></td>
+                <td align="center">
+                  <%= link_to image_tag("view.gif", :title => "View"), manage_article %>&nbsp;&nbsp;
+                  <%= link_to image_tag("edit.png", :title => "Edit"), edit_manage_article_path(manage_article) %>&nbsp;&nbsp;
+                  <%= link_to image_tag("delete.png", :title => "Delete"), manage_article, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,56 @@
+<%= form_for(@manage_green) do |f| %>
+  <% if @manage_green.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_green.errors.count, "error") %> prohibited this manage_green from being saved:</h2>
+
+      <ul>
+      <% @manage_green.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :title %>
+  </div>
+    <%= f.text_field :title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :sub_category %>
+  </div>
+    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :image %>
+  </div>
+    <%= f.file_field :image %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :created_by %>
+  </div>
+    <%= f.text_field :created_by %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Description' %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+
+<% end %>

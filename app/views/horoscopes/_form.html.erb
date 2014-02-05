@@ -1,0 +1,73 @@
+<%= form_for(@horoscope) do |f| %>
+  <% if @horoscope.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@horoscope.errors.count, "error") %> prohibited this horoscope from being saved:</h2>
+
+      <ul>
+      <% @horoscope.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+
+
+  <div class="label">
+    <%= f.label :title, 'Monthly Horoscopes Title' %>
+  </div>
+    <%= f.text_field :title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :subtitle, 'Monthly Horoscopes Subtitle' %>
+  </div>
+    <%= f.text_field :subtitle %>
+  <div class="clr"></div><br/>
+
+  <div class="label" id="datepicker" data-date="current">
+    <%= f.label :start_date, 'Monthly Horoscopes Start Date' %>
+  </div>
+    <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
+  <div class="clr"></div><br/>
+
+  <div class="label" id="datepicker" data-date="current">
+    <%= f.label :end_date, 'Monthly Horoscopes End Date' %>
+  </div>
+    <%= f.text_field :end_date, 'data-behaviour' => 'datepicker' %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :logo, 'Monthly Horoscopes Logo' %>
+  </div>
+    <%= f.file_field :logo %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :background, 'Monthly Horoscopes BG Image' %>
+  </div>
+    <%= f.file_field :background %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Monthly Horoscopes Description' %>
+  </div>
+  <div class="fld">
+    <%= f.cktext_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+
+</div>
+
+
+<% end %>
+

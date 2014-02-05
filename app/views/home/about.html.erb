@@ -1,0 +1,19 @@
+<div class="bradcrumb"><a href="/home">Home</a><a href="/about">About</a><span>About Yoga Life</span></div>
+<div class="contentBox">
+	<%= @cm.find_by_id(1) do |cm| %>
+		<%= sanitize(cm.page_content) %>
+	<% end %>
+</div>
+
+<!-- RIGHT LINKS -->
+<%- content_for :about do -%>
+  <div class="rightLinks">
+		<ul>
+	    	<li><a href="/about" class="active">About Yoga Life</a></li>
+	        <li><a href="#">Note from the Founder</a></li>
+	        <li><a href="/team">The Yoga Life Team</a></li>
+	        <li><a href="/where_to_buy">Where to buy</a></li>
+	        <li><a href="#">Contribute with us</a></li>
+	    </ul>
+	</div>
+<%- end -%>

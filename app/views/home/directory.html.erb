@@ -1,0 +1,13 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Directory</span></div>
+<div class="clearfix">
+	<% @manage_directories.each do |directory| %>
+    	<div class="directoryBox fl">
+            <h3><a><%= directory.business_name %></a></h3>
+            <%= directory.location %><br>
+            <span>Tel :</span> <%= directory.phone_no %><br>
+			<span>Email:</span> <%= directory.email %><br>
+            <span>Web :</span> <a href="http://http://www.google.com" target="_blank">http://www.google.com</a>
+          	<div class="clr"></div>
+        </div>
+    <% end %>
+</div>

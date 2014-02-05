@@ -1,0 +1,65 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Business Directory</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Sub Category:</b></div>
+          <div class="fld"><%= @manage_directory.sub_category %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Country:</b></div>
+          <div class="fld"><%= @manage_directory.country %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>City:</b></div>
+          <div class="fld"><%= @manage_directory.city %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Business Name:</b></div>
+          <div class="fld"><%= @manage_directory.business_name %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Location:</b></div>
+          <div class="fld"><%= @manage_directory.location %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Phone No.:</b></div>
+          <div class="fld"><%= @manage_directory.phone_no %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Email Id:</b></div>
+          <div class="fld"><%= @manage_directory.email %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Description:</b></div>
+          <div class="fld"><%= @manage_directory.desc %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_manage_directory_path(@manage_directory) %> |
+<%= link_to 'Back', manage_directories_path %>

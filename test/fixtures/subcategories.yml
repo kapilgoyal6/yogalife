@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cat_name: MyString
+  sub_cat_name: MyString
+  desc: MyText
+
+two:
+  cat_name: MyString
+  sub_cat_name: MyString
+  desc: MyText

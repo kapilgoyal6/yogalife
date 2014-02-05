@@ -1,0 +1,47 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View glow</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Title:</b></div>
+          <div class="fld"><%= @manage_glow.title %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Sub Category:</b></div>
+          <div class="fld"><%= @manage_glow.sub_category %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Created By:</b></div>
+          <div class="fld"><%= @manage_glow.created_by %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_glow.image, :width => 300) if @manage_glow.image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Description:</b></div>
+          <div class="fld"><%= @manage_glow.desc %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_manage_glow_path(@manage_glow) %> |
+<%= link_to 'Back', manage_glows_path %>

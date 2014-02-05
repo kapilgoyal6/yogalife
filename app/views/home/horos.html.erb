@@ -1,0 +1,18 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Horoscope</span></div>
+<h1>Your vedic stars this month</h1>
+<div class="horoscopeTxt">Unlike regular horoscopes, these predictions are based on your moon sign, which focuses on your emotions. The December readings are prepared exclusively for YogaLife by astrologer Mianne. Email her at <a href="mailto:mianneastro@gmail.com">mianneastro@gmail.com</a></div>
+<div>
+	<ul class="horoscopeDet">
+		<% @horoscopes.each do |horoscope| %>
+        	<li>
+            	<div class="lft"><%= image_tag(horoscope.logo) if horoscope.logo.present? %></div>
+                <div class="rgt">
+                    <h3><%= horoscope.title %> (<%= horoscope.subtitle %>)</h3>
+                   	<span class="date"><%= horoscope.start_date.strftime("%B %d") %> - <%= horoscope.end_date.strftime("%B %d") %></span>
+                     <div><%= truncate( raw( sanitize(horoscope.desc) ), :length => 1000) %></div>
+                </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>

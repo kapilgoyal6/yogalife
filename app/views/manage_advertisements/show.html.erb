@@ -1,0 +1,42 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View advertisement</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Right Add Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_advertisement.right_add_image, :width => 300) if @manage_advertisement.right_add_image.present? %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Right Add URL:</b></div>
+          <div class="fld"><%= @manage_advertisement.right_url %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Mid Add Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_advertisement.mid_add_image, :width => 300) if @manage_advertisement.mid_add_image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Mid Add URL:</b></div>
+          <div class="fld"><%= @manage_advertisement.mid_url %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_manage_advertisement_path(@manage_advertisement) %> |
+<%= link_to 'Back', manage_advertisements_path %>

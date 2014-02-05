@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yogalife</title>
+
+
+  <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  
+</head>
+<body>
+
+
+
+
+<!-- TOP BANNER -->
+<div class="topBanner"><a href=""><%= image_tag "top_banner.jpg" %></a></div>
+
+<!-- HEADER -->
+<header class="header">
+	<div class="fl">
+    <div class="logo"><a href="/home"><%= image_tag "logo.png" %></a></div>
+    <div class="logoTxt">yoga and inspired living in the middle east</div>
+  </div>
+  <div class="headerRight">
+  	<ul class="topLink">
+    	<li><a href="/magazine">Magazine</a></li>
+    	<li><a href="#">Store</a></li>
+    	<li><a href="/contact">Contact</a></li>
+      <li class="search"><a href="javascript:void(0)" class="searchL"><i class="searchIcon"></i></a>
+      	<div class="searchBox" id="searchD" style="display: none;">
+        	<gcse:search></gcse:search>
+        </div>
+      </li>
+    </ul>
+    <div class="topFollow">
+      <a href="http://www.twitter.com" class="twitter" target="_blank">&nbsp;</a>
+      <a href="http://www.facebook.com" class="facebook" target="_blank">&nbsp;</a>
+      <a href="http://www.youtube.com" class="youtube" target="_blank">&nbsp;</a>
+    </div>
+  </div>
+  <div class="clr"></div>
+</header>
+
+
+<!--Tab -->
+<nav class="tab">
+	<a class="mobLemuL" href="javascript:void(0)"><img src="images/mob_menu_bg.gif" alt=""></a>
+
+  <!-- MENU -->
+  <ul id="menu">
+  	<li><a href="/home" class="sel">Home</a></li>
+  	<li><a href="/pose/index" class="a">Pose</a>
+			<ul class="submenu">
+			 	<li><a href="/pose/pranayama">Pranayama</a></li>
+			 	<li><a href="/pose/community">Community</a></li>
+			 	<li><a href="/pose/asanas_and_sequences">Asanas and sequences</a></li>
+			 	<li><a href="/pose/pilates">Pilates</a></li>
+			 	<li><a href="/pose/yoga">Yoga</a></li>
+      </ul>
+		</li>
+    <li class=""><a href="/nourish/index" class="">Nourish</a>
+  		<ul class="submenu" style="display: none;">
+			 	<li><a href="/nourish/restaurants_and_cafes">Restaurants and cafes</a></li>
+			 	<li><a href="/nourish/recipes">Recipes</a></li>
+			 	<li><a href="/nourish/nutrition">Nutrition</a></li>
+      </ul>
+    </li>
+  	<li class=""><a href="/heal/index" class="">Heal</a>
+			<ul class="submenu" style="display: none;">
+			 	<li class=""><a href="/heal/spirit">Spirit</a></li>
+			 	<li class=""><a href="/heal/mind">Mind</a></li>
+			 	<li class=""><a href="/heal/body">Body</a></li>
+      </ul>
+  	</li>
+  	<li class=""><a href="/glow/index" class="">Glow</a>
+			<ul class="submenu" style="display: none;">
+			 	<li><a href="/glow/reviews">Reviews</a></li>
+			 	<li><a href="/glow/haircare">Haircare</a></li>
+			 	<li><a href="/glow/skincare">Skincare</a></li>
+      </ul>
+  	</li>
+  	<li class=""><a href="/retreat/index" class="">Retreat</a>
+			<ul class="submenu" style="display: none;">
+			 	<li><a href="/retreat/international">International</a></li>
+			 	<li><a href="/retreat/local">Local</a></li>
+      </ul>
+  	</li>
+		<li class=""><a href="/green/index" class="">Green</a>
+			<ul class="submenu" style="display: none;">
+			 	<li class=""><a href="/green/living_green">Living Green</a></li>
+			 	<li class=""><a href="/green/planet_earth">Planet Earth</a></li>
+      </ul>
+  	</li>
+  	<li><a href="/events" class="">Events</a></li>
+		<li><a href="/directory" class="">Directory</a></li>
+    <li class=""><a href="/about" class="">About</a></li>
+  </ul>
+
+  <!-- MOB MENU -->
+	<ul id="menuMob" style="display: none;">
+  	<li><a href="/home" class="sel">Home</a></li>
+  	<li><a href="/pose/index" class="">Pose</a></li>
+  	<li><a href="/nourish/index" class="">Nourish</a></li>
+  	<li><a href="/heal/index" class="">Heal</a></li>
+  	<li><a href="/glow/index" class="">Glow</a></li>
+  	<li><a href="/retreat/index" class="">Retreat</a></li>
+  	<li><a href="/green/index" class="">Green</a></li>
+  	<li><a href="/events" class="">Events</a></li>
+  	<li><a href="/directory" class="">Directory</a></li>
+   	<li><a href="/about" class="">About</a></li>
+  </ul>
+</nav>
+
+
+<section class="midCon clearfix">
+<aside class="midLeft">
+<%= yield %>
+    
+  <div class="clearfix">
+
+    <!-- YOGALIFE -->
+    <div class="yogalife">
+      <h2>Yogalife</h2>
+      <div>
+        <%= @cm.find_by_id(8) do |cm| %>
+          <%= sanitize(cm.page_content) %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- SITE MAP -->
+    <div class="sitemap clearfix">
+      <h2>Sitemap</h2>
+      <ul class="sitemapLink">
+        <li><a href="/pose/index">POSE</a></li>
+        <li><a href="/retreat/index">RETREAT</a></li>
+        <li><a href="/events">EVENTS</a></li>
+        <li><a href="/nourish/index">NOURISH</a></li>
+        <li><a href="/green/index">GREEN</a></li>
+        <li><a href="/magazine">MAGAZINE</a></li>
+        <li><a href="/heal/index">HEAL</a></li>
+        <li><a href="/directory">DIRECTORY</a></li>
+        <li><a href="/horos">HOROSCOPES</a></li>
+        <li><a href="#">CONTRIBUTE</a></li>
+        <li><a href="/glow/index">GLOW</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li><a href="/article">ARTICLE</a></li>
+        <li><a href="/news">News</a></li>
+      </ul>
+    </div>
+
+  </div>
+</aside>
+
+<aside class="midRight">
+
+<div id="about">
+<%= yield :about %>
+</div>
+
+
+<!-- MAGAZINE -->
+<div class="clearfix">
+    <% @manage_magazines.each do |magazine| %>
+    <div class="magzineLeft"><%= image_tag(magazine.cover_image, :height => 162, :width => 129) %></div>
+    <div class="magzineRight">
+        <span class="magzineHd"><%= magazine.title %></span>
+        <div class="magzineTxt"><%= magazine.desc %>
+        <div class="menu_fancy viewMag">
+            <%= link_to 'View Mag', {:controller => 'home', :action => 'viewmagazine', :id => magazine.id}, :class => "menu_fancy viewMag" %>
+            <!-- <a href="#" class="menu_fancy viewMag" data-fancybox-type="iframe">View Mag</a> -->
+        </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+<div class="clr"></div>
+
+
+<!--A Quote a Day -->
+<div class="botSpace">
+    <h1>A Quote a Day</h1>
+    <div>
+        <div class="qadTxt">Underneath please write: Sign up for a daily inspirational quote from YogaLife</div>
+        <!-- <form name="f1" id="f1" action="" method="post" onsubmit="return validate();">
+            <div class="qadInputBox">
+                <input type="text" name="user_email" id="user_email" value="Email Address" class="qadInput" onfocus="clearText(this);getemail(this.value);" onblur="replaceText(this);getemail(this.value);" onmouseout="getemail(this.value);" onkeyup="getemail(this.value);">
+                <input type="image" src="images/email_icon.gif"><br>
+            </div>
+            <div id="error6" style="color:red;"></div>
+            <div id="error7" style="color:red;"></div>
+        </form> -->
+
+        <div class="qadInputBox">
+            <%= form_for @subscriber, :remote => true do |f| %>
+                <%= f.text_field :email, class: 'qadInput', :value => "Email Address", :onclick => "this.value='';" %>
+                <%= image_submit_tag("", class: 'messageBtn') %>
+            <% end %>
+        </div>
+
+
+    </div>
+</div>
+<div class="clr"></div>
+
+
+<!--Most Popular -->
+<div class="mostPopCon">
+    <h1>Most Popular</h1>
+    <div>
+        <!-- <div class="populaTab">
+            <ul>
+                <li><a href="javascript:void(0)" class="active" id="mp1" onclick="tab_show('mp','1')">Shared</a></li>
+                <li><a href="javascript:void(0)" id="mp2" onclick="tab_show('mp','2')">Read</a></li>
+            </ul>
+        </div> -->
+        <div class="popularCon" id="mp_1">
+            <% @manage_articles.each do |articles| %>
+                <div class="popularBox clearfix">
+                    <div class="lft"><%= link_to image_tag(articles.image, :height => 65, :width => 81), :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
+                    <div class="rgt"><%= link_to articles.title, :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="clr"></div>
+
+
+<!--Rightbanner -->
+<div class="rightBanner">
+  <%= link_to image_tag("right_banner.jpg"), "http://www.google.com"  %>
+</div>
+<div class="clr"></div>
+
+
+<!-- FOLLOW US -->
+<div class="botSpace">
+  <h1>Follow us</h1>
+  <div class="followUs">
+  <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
+  <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
+  <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
+  <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
+  </div>
+</div>
+<div class="clr"></div>
+
+</aside>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+Copyright © Yoga Life, 2013. All Rights Reserved. <span>Web design by GO-Gulf.com</span>
+</footer>
+
+</body>
+</html>

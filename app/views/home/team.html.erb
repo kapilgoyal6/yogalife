@@ -1,0 +1,30 @@
+<div class="bradcrumb"><a href="/home">Home</a><a href="/about">About</a><span>The Yoga Life Team</span></div>
+<div>
+	<ul class="teamInfo">
+		<% @manage_teams.each do |team| %>
+        	<li>
+            	<div class="lft"><%= image_tag(team.image) if team.image.present? %></div>
+                <div class="rgt">
+                    <h3><%= team.name %></h3>
+                    <span class="position"><%= team.position %></span>
+                    <div><%= team.desc %></div>
+                </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+	</ul>
+</div>
+
+
+<!--Strat Right Links -->
+<%- content_for :about do -%>
+  <div class="rightLinks">
+		<ul>
+	    	<li><a href="/about" class="active">About Yoga Life</a></li>
+	        <li><a href="#">Note from the Founder</a></li>
+	        <li><a href="/team">The Yoga Life Team</a></li>
+	        <li><a href="/where_to_buy">Where to buy</a></li>
+	        <li><a href="#">Contribute with us</a></li>
+	    </ul>
+	</div>
+<%- end -%>

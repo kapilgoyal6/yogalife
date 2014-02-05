@@ -1,0 +1,61 @@
+<%= form_for(@manage_event) do |f| %>
+  <% if @manage_event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_event.errors.count, "error") %> prohibited this manage_event from being saved:</h2>
+
+      <ul>
+      <% @manage_event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :title %>
+  </div>
+    <%= f.text_field :title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :category %>
+  </div>
+    <%= f.select :category, options_for_select(%w[Classes Conferences]) %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :author %>
+  </div>
+    <%= f.text_field :author %>
+  <div class="clr"></div><br/>
+
+  <div class="label" id="datepicker" data-date="current" >
+    <%= f.label :event_date %>
+  </div>
+    <%= f.text_field :event_date, 'data-behaviour' => 'datepicker' %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :event_image %>
+  </div>
+    <%= f.file_field :event_image %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+<% end %>

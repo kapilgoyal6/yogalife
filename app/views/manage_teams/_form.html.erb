@@ -1,0 +1,49 @@
+<%= form_for(@manage_team) do |f| %>
+  <% if @manage_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_team.errors.count, "error") %> prohibited this manage_team from being saved:</h2>
+
+      <ul>
+      <% @manage_team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="adminform">
+  <div class="left">
+
+
+  <div class="label">
+    <%= f.label :name, 'Member Name' %>
+  </div>
+    <%= f.text_field :name %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :image, 'Image' %>
+  </div>
+    <%= f.file_field :image %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :position %>
+  </div>
+    <%= f.text_field :position %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Description' %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+<% end %>

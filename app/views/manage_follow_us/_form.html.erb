@@ -1,0 +1,79 @@
+<%= form_for(@manage_follow_u) do |f| %>
+  <% if @manage_follow_u.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_follow_u.errors.count, "error") %> prohibited this manage_follow_u from being saved:</h2>
+
+      <ul>
+      <% @manage_follow_u.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :facebook_url %>
+  </div>
+    <%= f.text_field :facebook_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :twitter_url %>
+  </div>
+    <%= f.text_field :twitter_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :google_url %>
+  </div>
+    <%= f.text_field :google_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :youtube_url %>
+  </div>
+    <%= f.text_field :youtube_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :ping_url %>
+  </div>
+    <%= f.text_field :ping_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :vimeo_url %>
+  </div>
+    <%= f.text_field :vimeo_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :tumbir_url %>
+  </div>
+    <%= f.text_field :tumbir_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :rss_url %>
+  </div>
+    <%= f.text_field :rss_url %>
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :flickr_url %>
+  </div>
+    <%= f.text_field :flickr_url %>
+  <div class="clr"></div><br>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+
+<% end %>

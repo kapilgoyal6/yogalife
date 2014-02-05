@@ -1,0 +1,2 @@
+module HealHelper
+end

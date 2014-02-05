@@ -1,0 +1,16 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Retreat</span> </div>
+<div>
+	<ul class="articleBox">
+		<% @manage_retreats.each do |retreat| %>
+	    	<li>
+                <div class="articleLeft"><%= link_to image_tag(retreat.image, :height => 150), :controller => 'home', :action => 'viewretreat', :id => retreat.id %></div>
+                <div class="articleRight">
+                    <div class="hd"><%= link_to retreat.title, :controller => 'home', :action => 'viewretreat', :id => retreat.id %></div>
+                    <div class="by">By <%= retreat.created_by %>&nbsp;&nbsp;<%= retreat.updated_at.strftime("%d %B %Y") %></div>
+                    <div><%= retreat.desc %></div>
+                </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>

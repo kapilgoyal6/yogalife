@@ -1,0 +1,41 @@
+<div id="paged-data-container">
+	<div class="tableCon">
+	  	<div class="formHdBox">
+		    <div class="tableHd">Admin Setting:  <span> </span>View News</div>
+  		</div>
+	  	<div class="adminform">
+			<div class="left">
+
+				<div class="fldline">
+					<div class="label"><b>Title:</b></div>
+					<div class="fld"><%= @manage_news.title %></div>
+					<div class="clr"></div>
+				</div>
+				
+				<div class="fldline">
+					<div class="label"><b>Created By:</b></div>
+					<div class="fld"><%= @manage_news.created_by %></div>
+					<div class="clr"></div>
+				</div>
+
+				<div class="fldline">
+					<div class="label"><b>Image:</b></div>
+					<div class="fld"><%= image_tag(@manage_news.news_image, :width => 300) if @manage_news.news_image.present? %></div>
+					<div class="clr"></div>
+				</div>
+
+				<div class="fldline">
+					<div class="label"><b>Description:</b></div>
+					<div class="fld"><%= @manage_news.desc %></div>
+					<div class="clr"></div>
+				</div>
+					 								
+			</div>
+			
+			<div class="clr"></div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_manage_news_path(@manage_news) %> |
+<%= link_to 'Back', manage_news_index_path %>

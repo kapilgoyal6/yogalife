@@ -1,0 +1,30 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">Admin Panel <span> Website Cms</span></div>
+  </div>
+  <div class="tabIner">
+    <table cellpadding="0" cellspacing="0" width="100%" class="table">
+      <tbody>
+        <tr class="tableHdIner alt-row">
+          <td width="28%" class="first">Page Title</td>
+          <td width="8%">Meta Keyword</td>
+          <td width="10%">Action</td>
+        </tr>
+        <% @cms.each do |cm| %>
+          <tr class="tableDet">
+            <td class="first"><%= cm.page_title %></td>
+            <td><%= cm.meta_keywords %></td>
+            <td> 
+              <%= link_to image_tag("view.gif", :title => "View"), cm %>&nbsp;&nbsp;
+              <%= link_to image_tag("edit.png", :title => "Edit"), edit_cm_path(cm) %>
+            </td>
+          </tr>
+        <% end %>       
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<%= link_to 'Add CMS', new_cm_path %>

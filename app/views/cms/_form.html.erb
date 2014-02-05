@@ -1,0 +1,51 @@
+<%= form_for(@cm) do |f| %>
+  <% if @cm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cm.errors.count, "error") %> prohibited this cm from being saved:</h2>
+
+      <ul>
+      <% @cm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+
+
+  <div class="label">
+    <%= f.label :page_title, 'Page Title:*' %>
+  </div>
+    <%= f.text_field :page_title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :meta_keywords, 'Meta Keywords:*' %>
+  </div>
+    <%= f.text_field :meta_keywords %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :meta_desc, 'Meta Description:*' %>
+  </div>
+    <%= f.text_field :meta_desc %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :page_content, 'Page Content:*' %>
+  </div>
+  <div class="fld">
+    <%= f.cktext_area :page_content %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>  
+<% end %>

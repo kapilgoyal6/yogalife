@@ -1,0 +1,41 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">Follow Us</div>
+    <div class="selectCity"></div>
+  </div>
+  <div class="paged-data">
+    <div class="tabIner">
+      <table cellpadding="0" cellspacing="0" width="100%" class="table">
+        <thead>
+          <tr class="tableHdIner alt-row">
+              <td width="" class="first">S. NO</td>
+              <td width="">Facebook</td>
+              <td width="">Twitter</td>
+              <td width="">Google</td>
+              <td width="">You Tube</td>
+              <td width="">Ping</td>
+              <td>Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @manage_follow_us.each do |manage_follow_u| %>
+            <tr class="tableDet">
+                <td class="first"><%= manage_follow_u.id %></td>
+                <td><%= manage_follow_u.facebook_url %></td>
+                <td><%= manage_follow_u.twitter_url %></td>
+                <td><%= manage_follow_u.google_url %></td>
+                <td><%= manage_follow_u.youtube_url %></td>
+                <td><%= manage_follow_u.ping_url %></td>
+                <td align="center">
+                  <%= link_to image_tag("edit.png", :title => "Edit"), edit_manage_follow_u_path(manage_follow_u) %>
+                </td>
+            </tr>
+
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+</div>
+</div>

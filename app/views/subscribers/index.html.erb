@@ -1,0 +1,35 @@
+<div id="paged-data-container">
+<div class="tableCon">
+  <div class="formHdBox">
+    <div class="tableHd">Newsletter Subscribers</div>
+  </div>
+  <div class="paged-data">
+    <div class="tabIner">
+      <table cellpadding="0" cellspacing="0" width="100%" class="table">
+        <thead>
+          <tr class="tableHdIner alt-row">
+            <td width="5%" class="first">S. NO</td>
+            <td width="30%">Subscribers Email</td>
+            <td width="10%">Created</td> 
+            <td width="10%">Action</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 0 %>
+          <% @subscribers.each do |subscriber| %>
+            <% i = i + 1 %>
+            <tr class="tableDet">
+              <td class="first"><%= i %></td>
+              <td><%= subscriber.email %></td>
+              <td><%= subscriber.created_at.strftime("%d-%b-%Y") %></td>
+              <td align="center">
+                <%= link_to image_tag("delete.png", :title => "Delete"), subscriber, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,8 @@
+<div class="bradcrumb"><a href="home/">Home</a><span>Contact</span></div>
+<div class="botSpace">
+	<div class="abtTopTxt">
+		<%= @cm.find_by_id(2) do |cm| %>
+			<%= sanitize(cm.page_content) %>
+		<% end %>
+	</div>                
+</div>

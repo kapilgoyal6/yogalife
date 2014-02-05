@@ -1,0 +1,49 @@
+<%= form_for(@manage_news) do |f| %>
+  <% if @manage_news.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_news.errors.count, "error") %> prohibited this manage_news from being saved:</h2>
+
+      <ul>
+      <% @manage_news.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :title, 'News Title' %>
+  </div>
+    <%= f.text_field :title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :created_by, 'Created By' %>
+  </div>
+    <%= f.text_field :created_by %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :news_image, 'News Image' %>
+  </div>
+    <%= f.file_field :news_image %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Description' %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+</div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Heal</span> </div>
+<div>
+	<ul class="articleBox">
+		<% @manage_heals.each do |heal| %>
+	    	<li>
+                <div class="articleLeft"><%= link_to image_tag(heal.image, :height => 150), :controller => 'home', :action => 'viewheal', :id => heal.id %></div>
+                <div class="articleRight">
+                    <div class="hd"><%= link_to heal.title, :controller => 'home', :action => 'viewheal', :id => heal.id %></div>
+                    <div class="by">By <%= heal.created_by %>&nbsp;&nbsp;<%= heal.updated_at.strftime("%d %B %Y") %></div>
+                    <div><%= heal.desc %></div>
+                </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>

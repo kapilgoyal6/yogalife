@@ -1,0 +1,35 @@
+<div id="paged-data-container">
+	<div class="tableCon">
+	  	<div class="formHdBox">
+		    <div class="tableHd">Admin Setting:  <span> </span>View Category</div>
+  		</div>
+	  	<div class="adminform">
+			<div class="left">
+
+				<div class="fldline">
+					<div class="label"><b>Category Name:</b></div>
+					<div class="fld"><%= @subcategory.cat_name %></div>
+					<div class="clr"></div>
+				</div>
+				
+				<div class="fldline">
+					<div class="label"><b>Sub Category Name:</b></div>
+					<div class="fld"><%= @subcategory.sub_cat_name %></div>
+					<div class="clr"></div>
+				</div>
+
+				<div class="fldline">
+					<div class="label"><b>Description:</b></div>
+					<div class="fld"><%= @subcategory.desc %></div>
+					<div class="clr"></div>
+				</div>
+					 								
+			</div>
+			
+			<div class="clr"></div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_subcategory_path(@subcategory) %> |
+<%= link_to 'Back', subcategories_path %>

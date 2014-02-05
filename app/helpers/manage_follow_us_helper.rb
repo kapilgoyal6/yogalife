@@ -1,0 +1,2 @@
+module ManageFollowUsHelper
+end

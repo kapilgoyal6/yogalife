@@ -1,0 +1,57 @@
+<%= form_for(@manage_pose) do |f| %>
+  <% if @manage_pose.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manage_pose.errors.count, "error") %> prohibited this manage_pose from being saved:</h2>
+
+      <ul>
+      <% @manage_pose.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="adminform">
+  <div class="left">
+
+
+  <div class="label">
+    <%= f.label :title, 'Pose Title' %>
+  </div>
+    <%= f.text_field :title %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :sub_category, 'Pose Sub Category' %>
+  </div>
+    <%= f.select :sub_category, options_for_select(%w[Pranayama Community Asanas_and_Sequences Pilates Yoga]) %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :author, 'Author' %>
+  </div>
+    <%= f.text_field :author %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :pose_image, 'Pose Image' %>
+  </div>
+    <%= f.file_field :pose_image %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Description' %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+
+</div>
+<% end %>

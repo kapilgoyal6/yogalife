@@ -1,0 +1,71 @@
+<div id="paged-data-container">
+  <div class="tableCon">
+      <div class="formHdBox">
+        <div class="tableHd">Admin Setting:  <span> </span>View Where To Buy</div>
+      </div>
+      <div class="adminform">
+      <div class="left">
+
+        <div class="fldline">
+          <div class="label"><b>Address:</b></div>
+          <div class="fld"><%= @wheretobuy.address %></div>
+          <div class="clr"></div>
+        </div>
+        
+        <div class="fldline">
+          <div class="label"><b>Country:</b></div>
+          <div class="fld"><%= @wheretobuy.country %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>City:</b></div>
+          <div class="fld"><%= @wheretobuy.city %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Working Days:</b></div>
+          <div class="fld"><%= @wheretobuy.w_days %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Working Hours:</b></div>
+          <div class="fld"><%= @wheretobuy.w_hours %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Phone No.:</b></div>
+          <div class="fld"><%= @wheretobuy.phone_no %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Fax No.:</b></div>
+          <div class="fld"><%= @wheretobuy.fax_no %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Email ID:</b></div>
+          <div class="fld"><%= @wheretobuy.email_id %></div>
+          <div class="clr"></div>
+        </div>
+                          
+      </div>
+      
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<%= link_to 'Edit', edit_wheretobuy_path(@wheretobuy) %> |
+<%= link_to 'Back', wheretobuys_path %>

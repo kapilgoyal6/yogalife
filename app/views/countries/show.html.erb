@@ -1,0 +1,22 @@
+<div id="paged-data-container">
+	<div class="tableCon">
+	  	<div class="formHdBox">
+		    <div class="tableHd">Admin Setting:  <span> </span>View Category</div>
+  		</div>
+	  	<div class="adminform">
+			<div class="left">
+
+				<div class="fldline">
+				  <div class="label"><b>Country Name:</b></div>
+					<div class="fld"><%= @country.country %></div>
+					<div class="clr"></div>
+				</div>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</div>
+</div>
+
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facebook_url: MyString
+  twitter_url: MyString
+  google_url: MyString
+  youtube_url: MyString
+  ping_url: MyString
+  vimeo_url: MyString
+  tumbir_url: MyString
+  rss_url: MyString
+  flickr_url: MyString
+
+two:
+  facebook_url: MyString
+  twitter_url: MyString
+  google_url: MyString
+  youtube_url: MyString
+  ping_url: MyString
+  vimeo_url: MyString
+  tumbir_url: MyString
+  rss_url: MyString
+  flickr_url: MyString

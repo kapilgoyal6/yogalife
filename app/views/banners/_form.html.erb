@@ -1,0 +1,33 @@
+<%= form_for(@banner) do |f| %>
+  <% if @banner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@banner.errors.count, "error") %> prohibited this banner from being saved:</h2>
+
+      <ul>
+      <% @banner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="adminform">
+  <div class="left">
+
+  <div class="label">
+    <%= f.label :image %><br>
+  </div>
+    <%= f.file_field :image %> Image size must be minimum 800*600
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :url, 'URL' %><br>
+  </div>
+    <%= f.text_field :url %> Please enter the URL in the format: http://www.google.com
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,39 @@
+<div class="bradcrumb"><a href="/home">Home</a><a href="/about">About</a><span>Where To Buy</span></div>
+<div class="botSpace">
+    <div class="wtbDet">
+    	<div id="wtb_1" style="display: block;">
+    		<% @wheretobuys.each do |buy| %>
+	    		<div class="wtbBox">
+	    			<div class="lft">City:</div>
+	    			<div class="rgt"><strong><%= buy.city %></strong></div>
+	    			<div class="clr"></div>
+	    			<div class="lft">Address:</div>
+	    			<div class="rgt"><%= buy.address %></div>
+	    			<div class="clr"></div>
+	    			<div class="lft">Working Hours:</div>
+	    			<div class="rgt"><%= buy.w_days %> : <%= buy.w_hours %></div>
+	    			<div class="clr"></div>
+	    			<div class="lft">Phone:</div>
+	    			<div class="rgt"><%= buy.phone_no %><span>Fax: </span><%= buy.fax_no %></div>
+	    			<div class="clr"></div>
+	    			<div class="lft">Email : </div>
+	    			<div class="rgt"><a href="mailto:<%= buy.email_id %>"><%= buy.email_id %></a></div>
+	    			<div class="clr"></div>
+				</div>
+			<% end %>
+        </div>
+  	</div>
+</div>
+
+<!--Strat Right Links -->
+<%- content_for :about do -%>
+  <div class="rightLinks">
+		<ul>
+	    	<li><a href="/about" class="active">About Yoga Life</a></li>
+	        <li><a href="#">Note from the Founder</a></li>
+	        <li><a href="/team">The Yoga Life Team</a></li>
+	        <li><a href="/where_to_buy">Where to buy</a></li>
+	        <li><a href="#">Contribute with us</a></li>
+	    </ul>
+	</div>
+<%- end -%>

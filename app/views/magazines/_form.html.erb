@@ -1,0 +1,57 @@
+<%= form_for(@magazine) do |f| %>
+  <% if @magazine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@magazine.errors.count, "error") %> prohibited this magazine from being saved:</h2>
+
+      <ul>
+      <% @magazine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="adminform">
+  <div class="left">
+
+
+
+  <div class="label">
+    <%= f.label :title , 'Magazine Title'%>
+  </div>
+    <%= f.text_field :title %>
+    <div class="clr"></div><br/>
+
+  <div class="label" id="datepicker" data-date="current">
+    <%= f.label :issue_date %>
+  </div>
+    <%= f.text_field :issue_date, 'data-behaviour' => 'datepicker' %>
+    <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :cover_image, 'Magazine Cover Image' %>
+  </div>
+    <%= f.file_field :cover_image %>
+    <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :desc, 'Description' %>
+  </div>
+  <div class="fld">
+    <%= f.text_area :desc %>
+  </div>
+    <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :pages, 'Magazine Pages' %>
+  </div>
+    <%= f.file_field :pages %>
+    <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit'%>
+  </div>
+
+
+</div>
+<% end %>

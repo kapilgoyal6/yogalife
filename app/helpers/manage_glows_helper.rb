@@ -1,0 +1,2 @@
+module ManageGlowsHelper
+end

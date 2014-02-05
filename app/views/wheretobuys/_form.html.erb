@@ -1,0 +1,74 @@
+<%= form_for(@wheretobuy) do |f| %>
+  <% if @wheretobuy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wheretobuy.errors.count, "error") %> prohibited this wheretobuy from being saved:</h2>
+
+      <ul>
+      <% @wheretobuy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+<div class="adminform">
+
+
+  <div class="label">
+    <%= f.label :address %>
+  </div>
+    <%= f.text_field :address %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :country, 'Select Country' %>
+  </div>
+  <%= f.collection_select :country, Country.all,  :id, :country %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :city, 'Select City' %>
+  </div>
+    <%= f.collection_select :city, City.all,  :id, :city %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :w_days, 'Working Days' %>
+  </div>
+    <%= f.text_field :w_days %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :w_hours, 'Working Hours' %>
+  </div>
+    <%= f.text_field :w_hours %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :phone_no, 'Phone No.' %>
+  </div>
+    <%= f.text_field :phone_no %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :fax_no, 'Fax No.' %>
+  </div>
+    <%= f.text_field :fax_no %>
+  <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :email_id, 'Email Id' %>
+  </div>
+    <%= f.text_field :email_id %>
+  <div class="clr"></div><br/>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+
+</div>
+
+<% end %>

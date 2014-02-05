@@ -1,0 +1,41 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Events</span></div>
+
+<div>
+    <ul class="articleBox">
+        <% @events.each do |event| %>
+            <li>
+                <div class="articleLeft">
+                    <%= link_to image_tag(event.event_image, :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.id %>
+                </div>
+                <div class="articleRight">
+                    <div class="hd"><%= link_to event.title, :controller => 'home', :action => 'eventdetail', :id => event.id %></div>
+                    <div class="by"><%= event.event_date %></div>
+                    <div><%= event.desc %></div>
+                    </div>
+                <div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+<%= paginate @events%>
+
+<div class="paging">
+    
+
+                <a class="prev"><i>&nbsp;</i>
+         
+    
+                
+                        </a><a class="sel">1</a>
+                    
+                
+                        <a title="Page 2" href="/anuj/yogalife/events/index/page/2">2</a>
+                    
+            
+    
+
+                <a title="Next" class="next" href="/anuj/yogalife/events/index/page/2"><i>&nbsp;</i></a>
+        
+  
+</div>

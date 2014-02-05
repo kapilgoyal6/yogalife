@@ -1,0 +1,17 @@
+<div class="bradcrumb"><a href="/home">Home</a><span>Pose</span> </div>
+<div>
+	<ul class="articleBox">
+		<% @manage_poses.each do |pose| %>
+        	<li>
+                <div class="articleLeft"><a href="#"><%= image_tag(pose.pose_image) if pose.pose_image.present? %></a>
+                </div>
+                <div class="articleRight">
+                    <div class="hd"><a href="#"><%= pose.title %></a></div>
+                    <div class="by">By <%= pose.author %>&nbsp;&nbsp;<%= pose.updated_at.strftime("%d %B %Y") %></div>
+                    <div><%= pose.desc %></div>
+                </div>
+            	<div class="clr"></div>
+            </li>
+        <% end %>
+    </ul>
+</div>
