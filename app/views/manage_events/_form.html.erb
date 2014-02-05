@@ -18,7 +18,7 @@
   <div class="label">
     <%= f.label :title %>
   </div>
-    <%= f.text_field :title %>
+    <%= f.text_field :name %>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -34,9 +34,15 @@
   <div class="clr"></div><br/>
 
   <div class="label" id="datepicker" data-date="current" >
-    <%= f.label :event_date %>
+    <%= f.label :start_date %>
   </div>
-    <%= f.text_field :event_date, 'data-behaviour' => 'datepicker' %>
+    <%= f.text_field :start_at, 'data-behaviour' => 'datepicker' %>
+  <div class="clr"></div><br/>
+
+  <div class="label" id="datepicker" data-date="current" >
+    <%= f.label :end_date %>
+  </div>
+    <%= f.text_field :end_at, 'data-behaviour' => 'datepicker' %>
   <div class="clr"></div><br/>
 
   <div class="label">

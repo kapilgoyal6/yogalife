@@ -1,5 +1,6 @@
 Yogalife::Application.routes.draw do
 
+  # match '/controller_name(/:year(/:month))' => 'controller_name#index', :as => :controller_name, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :subscribers
 
@@ -58,7 +59,7 @@ Yogalife::Application.routes.draw do
   get "/article" => 'home#article'
 
 get 'viewnews(/:id)', :controller => 'home',  :action => 'viewnews'
-get 'eventdetail(/:id)', :controller => 'home',  :action => 'eventdetail'
+get 'events(/:id)', :controller => 'home',  :action => 'eventdetail'
 get 'viewnourish(/:id)', :controller => 'home',  :action => 'viewnourish'
 get 'viewheal(/:id)', :controller => 'home',  :action => 'viewheal'
 get 'viewglow(/:id)', :controller => 'home',  :action => 'viewglow'
@@ -66,6 +67,8 @@ get 'viewretreat(/:id)', :controller => 'home',  :action => 'viewretreat'
 get 'viewgreen(/:id)', :controller => 'home',  :action => 'viewgreen'
 get 'viewmagazine(/:id)', :controller => 'home',  :action => 'viewmagazine'
 get 'viewarticle(/:id)', :controller => 'home',  :action => 'viewarticle'
+
+
 
   resources :magazines
 

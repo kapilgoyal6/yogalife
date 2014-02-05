@@ -11,37 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205060201) do
-
-  create_table "ad_firsts", force: true do |t|
-    t.string   "email"
-    t.text     "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ad_seconds", force: true do |t|
-    t.string   "name"
-    t.text     "about"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "articles", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "attachments", force: true do |t|
-    t.string   "file"
-    t.integer  "attachable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"
+ActiveRecord::Schema.define(version: 20140205122759) do
 
   create_table "banners", force: true do |t|
     t.string   "image"
@@ -90,10 +60,15 @@ ActiveRecord::Schema.define(version: 20140205060201) do
 
   create_table "events", force: true do |t|
     t.string   "name"
+    t.string   "category"
+    t.string   "author"
     t.datetime "start_at"
     t.datetime "end_at"
+    t.string   "image"
+    t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
   create_table "horoscopes", force: true do |t|
@@ -168,6 +143,9 @@ ActiveRecord::Schema.define(version: 20140205060201) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "name"
   end
 
   create_table "manage_follow_us", force: true do |t|

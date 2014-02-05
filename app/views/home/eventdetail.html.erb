@@ -1,8 +1,8 @@
 <section class="midCon clearfix">
 <aside class="midLeft">
-	<div class="bradcrumb"><a href="/home">Home</a><a href="/events">Events</a><span><%= @event.title %></span></div>
+	<div class="bradcrumb"><a href="/home">Home</a><a href="/events">Events</a><span><%= truncate( raw( sanitize(@event.name) ), :length => 20, :omission => "...") %></span></div>
 	<div>
-        <h1><%= @event.title %></h1>
+        <h1><%= @event.name %></h1>
         <div class="articleShare fr">
         	<a class="twitter popup" href="http://twitter.com" onclick="return popitup('http://twitter.com/home?status=')"><i class="twitterIcon"></i>Tweet this article</a>
             <a href="http://www.facebook.com" onclick="return popitup('http://www.facebook.com')"><i class="facebookIcon"></i>Share on Facebook</a>
@@ -23,13 +23,13 @@
                             <li style="margin-right: 10px; width: 65px;" class=""><a href="#" style="border-width: 0px;"><%= image_tag(@event.event_image, :height => 150) %></a></li>
                         </ul>
                     </div>
-                <div class="es-nav">
+                <!-- <div class="es-nav">
                 	<span class="es-nav-prev" style="display: inline;">Previous</span>
                 	<span class="es-nav-next" style="display: none;">Next</span>
-            	</div>
+            	</div> -->
         	</div>
         </div>
-        <div class="rg-image-wrapper">
+        <!-- <div class="rg-image-wrapper">
         	<div class="rg-image-nav">
         		<a href="#" class="rg-image-nav-prev">Previous</a>
         		<a href="#" class="rg-image-nav-next">Next</a>
@@ -39,7 +39,7 @@
     		<div class="rg-caption-wrapper">
     			<div class="rg-caption" style="display:none;"><p></p></div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 </aside>

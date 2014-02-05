@@ -972,18 +972,24 @@ a.ls-nav-next {display:block; background:url(../images/next_arrow.png) no-repeat
 .pagination {padding:22px 0 50px 0; text-align:center;}
 .pagination a {display:inline-block; height:31px; width:31px; font-size:15px; font-family:'andesbold'; text-align:center; border:1px solid #dedede; background:url(../images/gradient_bg.gif) repeat-x bottom; line-height:31px; margin:0 2px; border-radius:2px; vertical-align:middle;}
 .pagination a:hover, .pagination a.page.current {background:#ffc220; color:#fff;}
-.pagination a.prev {margin-right:20px;}
+/*.pagination a.prev {margin-right:20px;}
 .pagination a.prev i {display:inline-block; width:7px; height:9px; background:url(../images/prev.png) no-repeat; vertical-align:middle; margin-bottom:4px;}
 .pagination a.prev:hover i {background:url(../images/prev.png) no-repeat 0 -9px;}
 .pagination a.next {margin-left:20px;}
 .pagination a.next i {display:inline-block; width:7px; height:9px; background:url(../images/next.png) no-repeat; vertical-align:middle; margin-bottom:4px;}
 .pagination a.next:hover i {background:url(../images/next.png) no-repeat 0 -9px;}
-.pagination a {height:27px; width:27px; line-height:27px;}
+.pagination a {height:27px; width:27px; line-height:27px;}*/
 
 .pagination .next{
     background:url('next.png');
 }
 
 span.page.current{
-    background:url(../images/next.png);
+    display:inline-block; height:31px; width:31px; font-size:15px; font-family:'andesbold'; text-align:center; border:1px solid #dedede; background:url(../images/gradient_bg.gif) repeat-x bottom; line-height:31px; margin:0 2px; border-radius:2px; vertical-align:middle;
+    background:#ffc220; color:#fff;
+}
+
+span.next{
+    /*display:inline-block; height:31px; width:31px; font-size:15px; font-family:'andesbold'; text-align:center; border:1px solid #dedede; background:url(../images/gradient_bg.gif) repeat-x bottom; line-height:31px; margin:0 2px; border-radius:2px; vertical-align:middle;*/
+    background: red;
 }

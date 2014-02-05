@@ -13,6 +13,14 @@ class HomeController < ApplicationController
     @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
     @horoscopes = Horoscope.all
     @subscriber = Subscriber.new
+
+
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+
+    @shown_month = Date.civil(@year, @month)
+
+    @event_strips = ManageEvent.event_strips_for_month(@shown_month)
   end
 
 
@@ -27,7 +35,7 @@ class HomeController < ApplicationController
 
   def events
     @cm = Cm.all
-    @events = ManageEvent.order('updated_at DESC').page(params[:page]).per(2)
+    @events = ManageEvent.order('updated_at DESC').page(params[:page]).per(6)
     @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
     @subscriber = Subscriber.new
     @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all

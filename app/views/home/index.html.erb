@@ -11,7 +11,7 @@
             <div class="ls-s2 l1-s1" style="position: absolute; top: 140px; left: auto; right: 0px; display: block; width: auto; height: auto; font-size: 14px; padding: 0px; border-width: 0px; margin-left: 0px; margin-top: 0px; opacity: 0.961550084261928;">
                 <div class="bannerBox">
                     <span class="bannerHd">
-                        <img src="images/banner_txt.png" alt="">
+                        <%= image_tag 'banner_txt.png' %>
                     </span>
                     <span class="bannerSubHd">1 Fabulous four for radiant skin</span>
                     <div class="bannerTxt">
@@ -28,7 +28,7 @@
             <div class="ls-s2 l1-s1" style="position: absolute; top: 140px; left: auto; right: 0px; display: block; width: auto; height: auto; font-size: 14px; padding: 0px; border-width: 0px; margin-left: 0px; margin-top: 0px; opacity: 0.961550084261928;">
                 <div class="bannerBox">
                     <span class="bannerHd">
-                        <img src="images/banner_txt.png" alt="">
+                        <%= image_tag 'banner_txt.png' %>
                     </span>
                     <span class="bannerSubHd">2 Fabulous four for radiant skin</span>
                     <div class="bannerTxt">
@@ -194,10 +194,18 @@
 
 <aside class="midRight">
 <!--Rightbanner -->
-    <div class="rightBanner"><a href="http://www.google.com" target="_blank"><img src="images/right_banner.jpg" alt="" class="vAlign"></a></div>
+    <div class="rightBanner"><a href="http://www.google.com" target="_blank"><%= image_tag 'right_banner.jpg' %></a></div>
     <div class="clr"></div>
             
+
+
+
+
+
+
 <!--Calender -->
+<%= raw(event_calendar) %>
+<!-- END CALENDAR -->
     <div class="clr"></div>
 
 <!--Most Popular -->

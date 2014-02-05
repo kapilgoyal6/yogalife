@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin', github: 'gregbell/active_admin'
 
 # gem 'rails_admin'
 
