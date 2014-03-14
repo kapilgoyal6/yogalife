@@ -18,19 +18,19 @@
   <div class="label">
     <%= f.label :sub_category, 'Select Sub Category' %>
   </div>
-    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name %>
+    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name , :prompt=>'Select Subcategory*'%>
   <div class="clr"></div><br/>
 
   <div class="label">
     <%= f.label :country, 'Select Country' %>
   </div>
-    <%= f.collection_select :country, Country.all,  :country, :country %>
+    <%= f.collection_select :country, Country.all,  :country, :country, :prompt=>'Select Country*' %>
   <div class="clr"></div><br/>
 
   <div class="label">
     <%= f.label :city, 'Select City' %>
   </div>
-    <%= f.collection_select :city, City.all,  :city, :city %>
+    <%= f.collection_select :city, City.all,  :city, :city, :prompt=>'Select City*' %>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -67,7 +67,7 @@
     <%= f.label :desc %>
   </div>
   <div class="fld">
-    <%= f.text_area :desc %>
+    <%= f.cktext_area :desc %>
   </div>
   <div class="clr"></div><br/>
 

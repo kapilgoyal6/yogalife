@@ -3,11 +3,11 @@
 	<ul class="articleBox">
 		<% @manage_nourishes.each do |nourish| %>
 	    	<li>
-                <div class="articleLeft"><%= link_to image_tag(nourish.image, :height => 150), :controller => 'home', :action => 'viewnourish', :id => nourish.id %></div>
+                <div class="articleLeft"><%= link_to image_tag(nourish.image, :height => 150), :controller => 'home', :action => 'viewnourish', :id => nourish.slug %></div>
                 <div class="articleRight">
-                    <div class="hd"><%= link_to nourish.title, :controller => 'home', :action => 'viewnourish', :id => nourish.id %></div>
+                    <div class="hd"><%= link_to nourish.title.truncate(35), :controller => 'home', :action => 'viewnourish', :id => nourish.slug %></div>
                     <div class="by">By <%= nourish.created_by %>&nbsp;&nbsp;<%= nourish.updated_at.strftime("%d %B %Y") %></div>
-                    <div><%= nourish.desc %></div>
+                    <div><%= raw nourish.desc.truncate(800) %></div>
                 </div>
                 <div class="clr"></div>
             </li>

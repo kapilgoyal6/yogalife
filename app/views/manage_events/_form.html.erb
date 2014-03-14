@@ -1,4 +1,4 @@
-<%= form_for(@manage_event) do |f| %>
+<%= nested_form_for(@manage_event) do |f| %>
   <% if @manage_event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manage_event.errors.count, "error") %> prohibited this manage_event from being saved:</h2>
@@ -24,7 +24,7 @@
   <div class="label">
     <%= f.label :category %>
   </div>
-    <%= f.select :category, options_for_select(%w[Classes Conferences]) %>
+    <%= f.select :category, options_for_select(%w[Classes Conferences]), :prompt=>'Select Category' %>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -55,9 +55,23 @@
     <%= f.label :desc %>
   </div>
   <div class="fld">
-    <%= f.text_area :desc %>
+    <%= f.cktext_area :desc %>
   </div>
   <div class="clr"></div><br/>
+
+  <div class="label">
+    <%= f.label :pages, 'Event Images' %>
+  </div>
+  <div style="color:red;padding-left:113px">Image size must be minimum 800*600px
+  </div>
+  <div class="clr"></div><br/>
+
+  <%= f.fields_for :event_images do |attachment_form|  %>
+    <%= attachment_form.file_field :file, :style => "padding-left:113px" %>
+    <%= attachment_form.link_to_remove "Remove this file" %>
+  <% end %>
+
+  <%= f.link_to_add "Add More...", :event_images, :style => "padding-left:113px" %>
 
   <div class="actions">
     <%= f.submit 'Submit' %>

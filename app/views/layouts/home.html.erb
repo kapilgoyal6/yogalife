@@ -6,20 +6,33 @@
 
 
   <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.core", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.slider", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.utils", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
-<%= stylesheet_link_tag "event_calendar" %>
+
+<%= stylesheet_link_tag    "calendar", media: "all", "data-turbolinks-track" => true %>
  
   
 </head>
 <body>
-
+<% @manage_advertisement = ManageAdvertisement.find_by_id(3) %>
 
 <div class="mainCon">
-	<div class="topBanner"><a href=""><%= image_tag "top_banner.jpg" %></a></div>
-	<!-- Header section -->
-	<!--Start Header -->
+
+  <!-- ┌──────────┐ -->
+  <!-- │TOP BANNER│ -->
+  <!-- └──────────┘ -->
+	<div class="topBanner"><%= link_to image_tag(@manage_advertisement.top_image), @manage_advertisement.top_url %></div>
+
+  <!-- ┌──────┐ -->
+  <!-- │HEADER│ -->
+  <!-- └──────┘ -->
   <header class="header">
   	<div class="fl">
       <div class="logo"><a href="/home"><%= image_tag "logo.png" %></a></div>
@@ -27,12 +40,18 @@
     </div>
     <div class="headerRight">
     	<ul class="topLink">
-      	<li><a href="/magazine">Magazine</a></li>
+      	<li><a href="/mag">Magazine</a></li>
       	<li><a href="#">Store</a></li>
       	<li><a href="/contact">Contact</a></li>
         <li class="search"><a href="javascript:void(0)" class="searchL"><i class="searchIcon"></i></a>
-        	<div class="searchBox" id="searchD" style="display: none;">
-          	<gcse:search></gcse:search>
+        	<div class="searchBox" id="searchD">
+            <div class="searchInputbox">
+              <form action="/index/search" method="POST">
+                <input type="text" name="str" class="searchInput" value="Search Keyword" onfocus="clearText(this)" onblur="replaceText(this)">
+                <input type="image" src="/images/calender_next_arrow.gif">
+              </form>
+            <!-- <gcse:search></gcse:search> -->
+            </div>
           </div>
         </li>
       </ul>
@@ -44,12 +63,18 @@
     </div>
     <div class="clr"></div>
   </header>
-  <!--End Header -->
-	<!--Start Tab -->
+
+  <!-- ┌───────┐ -->
+  <!-- │NAV BAR│ -->
+  <!-- └───────┘ -->
   <nav class="tab">
   	<a class="mobLemuL" href="javascript:void(0)"><img src="images/mob_menu_bg.gif" alt=""></a>
+
+    <!-- ┌────────┐ -->
+    <!-- │TAB MENU│ -->
+    <!-- └────────┘ -->
     <ul id="menu">
-    	<li><a href="/home" class="sel">Home</a></li>
+    	<li><a href="/" class="sel">Home</a></li>
 	  	<li><a href="/pose/index" class="a">Pose</a>
 				<ul class="submenu">
 				 	<li><a href="/pose/pranayama">Pranayama</a></li>
@@ -96,8 +121,12 @@
   		<li><a href="/directory" class="">Directory</a></li>
       <li class=""><a href="/about" class="">About</a></li>
     </ul>
-		<ul id="menuMob" style="display: none;">
-    	<li><a href="/home" class="sel">Home</a></li>
+
+    <!-- ┌───────────┐ -->
+    <!-- │MOBILE MENU│ -->
+    <!-- └───────────┘ -->
+		<ul id="menuMob">
+    	<li><a href="/" class="sel">Home</a></li>
     	<li><a href="/pose/index" class="">Pose</a></li>
     	<li><a href="/nourish/index" class="">Nourish</a></li>
     	<li><a href="/heal/index" class="">Heal</a></li>
@@ -110,55 +139,200 @@
     </ul>
   </nav>
 
-<%= yield %>
 
-<!-- TERMS -->
+
 <section class="midCon clearfix">
-  <aside class="midLeft">
-    <div class="clearfix">
-      <div class="yogalife">
-        <h2>Yogalife</h2>
-        <div>
-          <%= @cm.find_by_id(8) do |cm| %>
-            <%= sanitize(cm.page_content) %>
-          <% end %>
-        </div>
+<aside class="midLeft">
+
+  <%= yield %>
+
+  <div class="clearfix">
+
+    <!-- ┌─────┐ -->
+    <!-- │TERMS│ -->
+    <!-- └─────┘ -->
+    <div class="yogalife">
+      <h2>Yogalife</h2>
+      <div>
+        <%= @cm.find_by_id(8) do |cm| %>
+          <%= sanitize(cm.page_content) %>
+        <% end %>
       </div>
-      <div class="sitemap clearfix">
-        <h2>Sitemap</h2>
-        <ul class="sitemapLink">
-          <li><a href="/pose/index">POSE</a></li>
-          <li><a href="/retreat/index">RETREAT</a></li>
-          <li><a href="/events">EVENTS</a></li>
-          <li><a href="/nourish/index">NOURISH</a></li>
-          <li><a href="/green/index">GREEN</a></li>
-          <li><a href="/magazine">MAGAZINE</a></li>
-          <li><a href="/heal/index">HEAL</a></li>
-          <li><a href="/directory">DIRECTORY</a></li>
-          <li><a href="/horos">HOROSCOPES</a></li>
-          <li><a href="#">CONTRIBUTE</a></li>
-          <li><a href="/glow/index">GLOW</a></li>
-          <li><a href="/about">ABOUT</a></li>
-          <li><a href="/contact">CONTACT</a></li>
-          <li><a href="/article">ARTICLE</a></li>
-          <li><a href="/news">News</a></li>
+    </div>
+
+    <!-- ┌────────┐ -->
+    <!-- │SITE MAP│ -->
+    <!-- └────────┘ -->
+    <div class="sitemap clearfix">
+      <h2>Sitemap</h2>
+      <ul class="sitemapLink">
+        <li><a href="/pose/index">POSE</a></li>
+        <li><a href="/retreat/index">RETREAT</a></li>
+        <li><a href="/events">EVENTS</a></li>
+        <li><a href="/nourish/index">NOURISH</a></li>
+        <li><a href="/green/index">GREEN</a></li>
+        <li><a href="/mag">MAGAZINE</a></li>
+        <li><a href="/heal/index">HEAL</a></li>
+        <li><a href="/directory">DIRECTORY</a></li>
+        <li><a href="/horos">HOROSCOPES</a></li>
+        <li><a href="#">CONTRIBUTE</a></li>
+        <li><a href="/glow/index">GLOW</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li><a href="/article">ARTICLE</a></li>
+        <li><a href="/news">News</a></li>
+      </ul>
+    </div>
+
+  </div>
+</aside>
+
+<aside class="midRight">
+
+  <!-- ┌────────────┐ -->
+  <!-- │RIGHT BANNER│ -->
+  <!-- └────────────┘ -->
+  <div class="rightBanner"><%= link_to image_tag(@manage_advertisement.mid_image), @manage_advertisement.mid_url %></div>
+  <div class="clr"></div>
+
+  <!-- ┌──────────────┐ -->
+  <!-- │EVENT CALENDAR│ -->
+  <!-- └──────────────┘ -->
+  <%= raw(event_calendar) %>
+  <br>
+  <br>
+  <div class="clr"></div>
+
+  <!-- ┌────────────┐ -->
+  <!-- │MOST POPULAR│ -->
+  <!-- └────────────┘ -->
+  <div class="mostPopCon">
+  <h1>Most Popular</h1>
+    <div>
+      <div class="popularCon" id="mp_1">
+        <% @manage_articles.each do |articles| %>
+          <div class="popularBox clearfix">
+            <div class="lft"><%= link_to image_tag(articles.image, :height => 65, :width => 81), :controller => 'home', :action => 'viewarticle', :id => articles.slug %></div>
+            <div class="rgt"><%= link_to articles.title, :controller => 'home', :action => 'viewarticle', :id => articles.slug %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>  
+
+  <!-- ┌──────────┐ -->
+  <!-- │NEWSLETTER│ -->
+  <!-- └──────────┘ -->
+  <div class="botSpace">
+    <h1>NEWSLETTER</h1>
+    <div>
+      <div class="qadTxt">Sign up for our monthly newsletter</div>
+      <div class="qadInputBox">
+        <%= form_for @subscriber, :remote => true do |f| %>
+          <%= f.text_field :email, id: 'newsltr', class: 'qadInput', :value => "Email Address", :onfocus => "clearText(this)", :onblur => "replaceText(this)" %>
+          <%= image_submit_tag("", class: 'messageBtn', :onclick => "validate(this);") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+  <!-- ┌────────┐ -->
+  <!-- │MAGAZINE│ -->
+  <!-- └────────┘ -->
+  <div class="clearfix">
+    <% @manage_magazines.each do |magazine| %>
+      <div class="magzineLeft"><%= image_tag(magazine.cover_image, :height => 162, :width => 129) %></div>
+      <div class="magzineRight">
+        <span class="magzineHd"><%= magazine.title %></span>
+        <div class="magzineTxt">
+          <%= raw magazine.desc.truncate(50) %>
+          <%= link_to 'View Mag', {:controller => 'home', :action => 'viewmagazine', :id => magazine.id}, :class => "menu_fancy viewMag" %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+  <!-- ┌──────────┐ -->
+  <!-- │HOROSCOPES│ -->
+  <!-- └──────────┘ -->
+  <div class="botSpace">
+    <h1>HOROSCOPE</h1>    
+    <div class="horoscopeBox">
+      <div id="slideshow">
+        <div class="horArrow"><a href="javascript:void(0)" id="prev"><img src="images/hor_prev_arrow.gif" alt=""></a> <a href="javascript:void(0)" id="next"><img src="images/hor_next_arrow.gif" alt=""></a></div>
+        <ul>
+          <% @horoscopes.each do |horos| %>
+            <li style="background-image: url(images/horoscope_bg.png); background-color: rgb(255, 255, 255);  overflow: hidden; float: left; width: 210px; height: 263px; background-position: 50% 100%; background-repeat: no-repeat no-repeat;">
+              <div class="horHd" style="background:url(<%= (horos.logo.url) -%>) no-repeat 0 0;background-size: 48px 48px;"><%= horos.title %>
+                <span>(<%= horos.subtitle %>)</span>
+              </div>
+              <div class="horDate">
+                  <%= horos.start_date.strftime("%B %d") %>-<%= horos.end_date.strftime("%B %d") %>
+              </div>
+              <div class="horTxt"><%= raw(horos.desc) %></div>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
-  </aside>
+  </div>
+  <div class="clr"></div>
+
+  <!-- ┌──────────────┐ -->
+  <!-- │FOLLOW TWITTER│ -->
+  <!-- └──────────────┘ -->
+  <div class="twitterCon">
+    <h1 class="twitterBird">FOLLOW US ON FOR Mind, Body &amp; SPIRIT UPDATES</h1>
+    <ul class="twitterBox">
+      <a class="twitter-timeline" href="https://twitter.com/Flexsin_Flex" data-widget-id="438255974235648000">Tweets by @Flexsin_Flex</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </ul>
+  </div>
+  <div class="clr"></div>
+
+
+  <!-- ┌─────────┐ -->
+  <!-- │FOLLOW US│ -->
+  <!-- └─────────┘ -->
+  <div class="botSpace">
+    <h1>Follow us</h1>
+    <div class="followUs">
+      <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
+      <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
+      <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+</aside>
 </section>
 
-
-
-    <footer class="footer">
-    Copyright © Yoga Life, 2013. All Rights Reserved. <span>Web design by GO-Gulf.com</span>
-    </footer>
-    <!--End Footer --></div>
+<!-- ┌──────┐ -->
+<!-- │FOOTER│ -->
+<!-- └──────┘ -->
+<footer class="footer">
+  Copyright © Yoga Life, 2013. All Rights Reserved.
+  <span>Web design by GO-Gulf.com</span>
+</footer>
 	
 
 
 
-
+</div>
 
 </body>
 </html>
+
+
+<!-- ┌─┐ -->
+<!-- ├─┤ -->
+<!-- └─┘ -->

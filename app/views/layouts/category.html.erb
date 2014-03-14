@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%= favicon_link_tag 'favicon.ico' %>
   <title>Yogalife</title>
 
 
   <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag "social", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "fancybox", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
   
 </head>
 <body>
+<% @manage_advertisement = ManageAdvertisement.find_by_id(3) %>
 
 
-
-
+<div class="mainCon">
 <!-- TOP BANNER -->
-<div class="topBanner"><a href=""><%= image_tag "top_banner.jpg" %></a></div>
+<div class="topBanner"><%= link_to image_tag(@manage_advertisement.top_image), @manage_advertisement.top_url %></div>
 
 <!-- HEADER -->
 <header class="header">
@@ -25,13 +31,19 @@
   </div>
   <div class="headerRight">
   	<ul class="topLink">
-    	<li><a href="/magazine">Magazine</a></li>
+    	<li><a href="/mag">Magazine</a></li>
     	<li><a href="#">Store</a></li>
     	<li><a href="/contact">Contact</a></li>
       <li class="search"><a href="javascript:void(0)" class="searchL"><i class="searchIcon"></i></a>
-      	<div class="searchBox" id="searchD" style="display: none;">
-        	<gcse:search></gcse:search>
-        </div>
+      	<div class="searchBox" id="searchD">
+            <div class="searchInputbox">
+              <form action="/index/search" method="POST">
+                <input type="text" name="str" class="searchInput" value="Search Keyword" onfocus="clearText(this)" onblur="replaceText(this)">
+                <input type="image" src="/images/calender_next_arrow.gif">
+              </form>
+            <!-- <gcse:search></gcse:search> -->
+            </div>
+          </div>
       </li>
     </ul>
     <div class="topFollow">
@@ -45,12 +57,12 @@
 
 
 <!--Tab -->
-<nav class="tab">
-	<a class="mobLemuL" href="javascript:void(0)"><img src="images/mob_menu_bg.gif" alt=""></a>
+<nav class="tab"> 
+	<a class="mobLemuL" href="javascript:void(0)"><%= image_tag("mob_menu_bg.gif") %></a>
 
   <!-- MENU -->
   <ul id="menu">
-  	<li><a href="/home" class="sel">Home</a></li>
+  	<li><a href="/" class="sel">Home</a></li>
   	<li><a href="/pose/index" class="a">Pose</a>
 			<ul class="submenu">
 			 	<li><a href="/pose/pranayama">Pranayama</a></li>
@@ -99,8 +111,8 @@
   </ul>
 
   <!-- MOB MENU -->
-	<ul id="menuMob" style="display: none;">
-  	<li><a href="/home" class="sel">Home</a></li>
+	<ul id="menuMob">
+  	<li><a href="/" class="sel">Home</a></li>
   	<li><a href="/pose/index" class="">Pose</a></li>
   	<li><a href="/nourish/index" class="">Nourish</a></li>
   	<li><a href="/heal/index" class="">Heal</a></li>
@@ -139,7 +151,7 @@
         <li><a href="/events">EVENTS</a></li>
         <li><a href="/nourish/index">NOURISH</a></li>
         <li><a href="/green/index">GREEN</a></li>
-        <li><a href="/magazine">MAGAZINE</a></li>
+        <li><a href="/mag">MAGAZINE</a></li>
         <li><a href="/heal/index">HEAL</a></li>
         <li><a href="/directory">DIRECTORY</a></li>
         <li><a href="/horos">HOROSCOPES</a></li>
@@ -162,97 +174,120 @@
 </div>
 
 
-<!-- MAGAZINE -->
-<div class="clearfix">
+  <!-- ┌────────┐ -->
+  <!-- │MAGAZINE│ -->
+  <!-- └────────┘ -->
+  <div class="clearfix">
     <% @manage_magazines.each do |magazine| %>
-    <div class="magzineLeft"><%= image_tag(magazine.cover_image, :height => 162, :width => 129) %></div>
-    <div class="magzineRight">
+      <div class="magzineLeft"><%= image_tag(magazine.cover_image) %></div>
+      <div class="magzineRight">
         <span class="magzineHd"><%= magazine.title %></span>
-        <div class="magzineTxt"><%= magazine.desc %>
-        <div class="menu_fancy viewMag">
-            <%= link_to 'View Mag', {:controller => 'home', :action => 'viewmagazine', :id => magazine.id}, :class => "menu_fancy viewMag" %>
-            <!-- <a href="#" class="menu_fancy viewMag" data-fancybox-type="iframe">View Mag</a> -->
-        </div>
+        <div class="magzineTxt">
+          <%= raw magazine.desc.truncate(50) %>
+          <%= link_to 'View Mag', {:controller => 'home', :action => 'viewmagazine', :id => magazine.id}, :class => "menu_fancy viewMag" %>
+          <a href="/viewmagazine/26"  class="menu_fancy viewMag" data-fancybox-type="iframe">View Mag</a>
         </div>
     <% end %>
     </div>
-</div>
-<div class="clr"></div>
-
-
-<!--A Quote a Day -->
-<div class="botSpace">
-    <h1>A Quote a Day</h1>
-    <div>
-        <div class="qadTxt">Underneath please write: Sign up for a daily inspirational quote from YogaLife</div>
-        <!-- <form name="f1" id="f1" action="" method="post" onsubmit="return validate();">
-            <div class="qadInputBox">
-                <input type="text" name="user_email" id="user_email" value="Email Address" class="qadInput" onfocus="clearText(this);getemail(this.value);" onblur="replaceText(this);getemail(this.value);" onmouseout="getemail(this.value);" onkeyup="getemail(this.value);">
-                <input type="image" src="images/email_icon.gif"><br>
-            </div>
-            <div id="error6" style="color:red;"></div>
-            <div id="error7" style="color:red;"></div>
-        </form> -->
-
-        <div class="qadInputBox">
-            <%= form_for @subscriber, :remote => true do |f| %>
-                <%= f.text_field :email, class: 'qadInput', :value => "Email Address", :onclick => "this.value='';" %>
-                <%= image_submit_tag("", class: 'messageBtn') %>
-            <% end %>
-        </div>
-
-
-    </div>
-</div>
-<div class="clr"></div>
-
-
-<!--Most Popular -->
-<div class="mostPopCon">
-    <h1>Most Popular</h1>
-    <div>
-        <!-- <div class="populaTab">
-            <ul>
-                <li><a href="javascript:void(0)" class="active" id="mp1" onclick="tab_show('mp','1')">Shared</a></li>
-                <li><a href="javascript:void(0)" id="mp2" onclick="tab_show('mp','2')">Read</a></li>
-            </ul>
-        </div> -->
-        <div class="popularCon" id="mp_1">
-            <% @manage_articles.each do |articles| %>
-                <div class="popularBox clearfix">
-                    <div class="lft"><%= link_to image_tag(articles.image, :height => 65, :width => 81), :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
-                    <div class="rgt"><%= link_to articles.title, :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
-                </div>
-            <% end %>
-        </div>
-    </div>
-</div>
-<div class="clr"></div>
-
-
-<!--Rightbanner -->
-<div class="rightBanner">
-  <%= link_to image_tag("right_banner.jpg"), "http://www.google.com"  %>
-</div>
-<div class="clr"></div>
-
-
-<!-- FOLLOW US -->
-<div class="botSpace">
-  <h1>Follow us</h1>
-  <div class="followUs">
-  <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
-  <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
-  <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
-  <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
   </div>
-</div>
-<div class="clr"></div>
+  <div class="clr"></div>
+
+  <script>    
+  (document).ready(function() {
+    (".fancybox").fancybox({
+      openEffect  : 'none',
+      closeEffect : 'none'
+    });
+    (".menu_fancy").fancybox({
+      maxWidth  : 960,
+      maxHeight : 660,
+      minWidth  : 260,
+      fitToView : false,
+      width   : '100%',
+      height    : '100%',
+      autoSize  : false,
+      closeClick  : false,
+      openEffect  : 'none',
+      closeEffect : 'none'
+    });
+  });
+</script>
+
+  <!-- ┌──────────┐ -->
+  <!-- │NEWSLETTER│ -->
+  <!-- └──────────┘ -->
+  <div class="botSpace">
+    <h1>NEWSLETTER</h1>
+    <div>
+      <div class="qadTxt">Sign up for our monthly newsletter</div>
+      <div class="qadInputBox">
+        <%= form_for @subscriber, :remote => true do |f| %>
+          <%= f.text_field :email, id: 'newsltr', class: 'qadInput', :value => "Email Address", :onfocus => "clearText(this)", :onblur => "replaceText(this)" %>
+          <%= image_submit_tag("", class: 'messageBtn', :onclick => "validate(this);") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+
+  <!-- ┌────────────┐ -->
+  <!-- │MOST POPULAR│ -->
+  <!-- └────────────┘ -->
+  <div class="mostPopCon">
+  <h1>Most Popular</h1>
+    <div>
+      <div class="popularCon" id="mp_1">
+        <% @manage_articles.each do |articles| %>
+          <div class="popularBox clearfix">
+            <div class="lft"><%= link_to image_tag(articles.image, :height => 65, :width => 81), :controller => 'home', :action => 'viewarticle', :id => articles.slug %></div>
+            <div class="rgt"><%= link_to articles.title, :controller => 'home', :action => 'viewarticle', :id => articles.slug %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+
+  <!-- ┌──────────────┐ -->
+  <!-- │FOLLOW TWITTER│ -->
+  <!-- └──────────────┘ -->
+  <div class="twitterCon">
+    <h1 class="twitterBird">FOLLOW US ON FOR Mind, Body &amp; SPIRIT UPDATES</h1>
+    <ul class="twitterBox">
+      <a class="twitter-timeline" href="https://twitter.com/Flexsin_Flex" data-widget-id="438255974235648000">Tweets by @Flexsin_Flex</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </ul>
+  </div>
+  <div class="clr"></div>  
+
+
+  <!-- ┌────────────┐ -->
+  <!-- │RIGHT BANNER│ -->
+  <!-- └────────────┘ -->
+  <div class="rightBanner"><%= link_to image_tag(@manage_advertisement.mid_image), @manage_advertisement.mid_url %></div>
+  <div class="clr"></div>
+
+
+  <!-- ┌─────────┐ -->
+  <!-- │FOLLOW US│ -->
+  <!-- └─────────┘ -->
+  <div class="botSpace">
+    <h1>Follow us</h1>
+    <div class="followUs">
+      <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
+      <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
+      <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
+    </div>
+  </div>
+  <div class="clr"></div>
 
 </aside>
 </section>
@@ -261,6 +296,9 @@
 <footer class="footer">
 Copyright © Yoga Life, 2013. All Rights Reserved. <span>Web design by GO-Gulf.com</span>
 </footer>
+
+</div>
+
 
 </body>
 </html>

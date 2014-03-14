@@ -64,11 +64,11 @@ class ManageEventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_manage_event
-      @manage_event = ManageEvent.find(params[:id])
+      @manage_event = ManageEvent.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_event_params
-      params.require(:manage_event).permit(:title, :category, :author, :event_date, :event_image, :desc, :start_at, :end_at, :name)
+      params.require(:manage_event).permit(:title, :category, :author, :event_date, :event_image, :desc, :start_at, :end_at, :name, event_images_attributes: [:file])
     end
 end

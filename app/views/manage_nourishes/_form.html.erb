@@ -25,7 +25,7 @@
   <div class="label">
     <%= f.label :sub_category, 'Nourish Sub Category' %>
   </div>
-    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name %>
+    <%= f.collection_select :sub_category, Subcategory.all,  :sub_cat_name, :sub_cat_name , :prompt=>'Select Subategory*'%>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -50,7 +50,7 @@
     <%= f.label :desc, 'Description' %>
   </div>
   <div class="fld">
-    <%= f.text_area :desc %>
+    <%= f.cktext_area :desc %>
   </div>
   <div class="clr"></div><br/>
 

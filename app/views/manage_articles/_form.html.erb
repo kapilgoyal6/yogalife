@@ -1,4 +1,4 @@
-<%= form_for(@manage_article) do |f| %>
+<%= form_for @manage_article do |f| %>
   <% if @manage_article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manage_article.errors.count, "error") %> prohibited this manage_article from being saved:</h2>
@@ -25,13 +25,13 @@
   <div class="label">
     <%= f.label :cat, 'Category' %>
   </div> 
-    <%= f.select :cat, options_for_select(%w[POSE NOURISH HEAL GLOW RETREAT GREEN EVENTS DIRECTORY]) %>
+    <%= f.select :cat, options_for_select(%w[POSE NOURISH HEAL GLOW RETREAT GREEN]), :prompt=>'Select Category*' %>
   <div class="clr"></div><br/>
 
   <div class="label">
     <%= f.label :sub_cat, 'Sub Category' %>
   </div>
-    <%= f.collection_select :sub_cat, Subcategory.all,  :sub_cat_name, :sub_cat_name %>
+    <%= f.collection_select :sub_cat, Subcategory.all,  :sub_cat_name, :sub_cat_name, :prompt=>'Select Subcategory*' %>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -66,3 +66,34 @@
 
 </div>
 <% end %>
+
+
+<script>
+  
+  // When the browser is ready...
+  // $(function() {
+  
+  //   // Setup form validation on the #register-form element
+  //   $("#register-form").validate({
+    
+  //       // Specify the validation rules
+  //       rules: {
+  //           title: {
+  //               required: true,
+  //               title: true
+  //           }
+  //       },
+
+  //       messages: {
+            
+  //           title: "Please enter a valid email address",
+  //       },
+        
+  //       submitHandler: function(form) {
+  //           form.submit();
+  //       }
+  //   });
+
+  // });
+  
+  </script>

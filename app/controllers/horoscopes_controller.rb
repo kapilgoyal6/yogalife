@@ -1,4 +1,7 @@
 class HoroscopesController < ApplicationController
+
+  # http_basic_authenticate_with :name => "myfinance", :password => "credit123"
+
   before_action :set_horoscope, only: [:show, :edit, :update, :destroy]
 
   # GET /horoscopes

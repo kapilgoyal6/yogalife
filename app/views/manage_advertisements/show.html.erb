@@ -7,26 +7,38 @@
       <div class="left">
 
         <div class="fldline">
-          <div class="label"><b>Right Add Image:</b></div>
-          <div class="fld"><%= image_tag(@manage_advertisement.right_add_image, :width => 300) if @manage_advertisement.right_add_image.present? %></div>
+          <div class="label"><b>Top Add Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_advertisement.top_image, :width => 300) if @manage_advertisement.top_image.present? %></div>
           <div class="clr"></div>
         </div>
         
         <div class="fldline">
-          <div class="label"><b>Right Add URL:</b></div>
-          <div class="fld"><%= @manage_advertisement.right_url %></div>
+          <div class="label"><b>Top Add URL:</b></div>
+          <div class="fld"><%= @manage_advertisement.top_url %></div>
           <div class="clr"></div>
         </div>
 
         <div class="fldline">
           <div class="label"><b>Mid Add Image:</b></div>
-          <div class="fld"><%= image_tag(@manage_advertisement.mid_add_image, :width => 300) if @manage_advertisement.mid_add_image.present? %></div>
+          <div class="fld"><%= image_tag(@manage_advertisement.mid_image, :width => 300) if @manage_advertisement.mid_image.present? %></div>
           <div class="clr"></div>
         </div>
 
         <div class="fldline">
           <div class="label"><b>Mid Add URL:</b></div>
           <div class="fld"><%= @manage_advertisement.mid_url %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Bottom Add Image:</b></div>
+          <div class="fld"><%= image_tag(@manage_advertisement.bottom_image, :width => 300) if @manage_advertisement.bottom_image.present? %></div>
+          <div class="clr"></div>
+        </div>
+
+        <div class="fldline">
+          <div class="label"><b>Bottom Add URL:</b></div>
+          <div class="fld"><%= @manage_advertisement.bottom_url %></div>
           <div class="clr"></div>
         </div>
                           

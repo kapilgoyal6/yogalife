@@ -1,0 +1,23 @@
+<div class="bradcrumb"><a href="/home">Home</a><a href="/pose/index">Pose</a><span><%= @pose.title.truncate(20) %></span></div>
+
+<div>
+    <h1><%= @pose.title %></h1>
+
+    <div class="articleShare">
+        <a class="twitter popup" href="http://twitter.com" onclick="return popitup('http://twitter.com/home?status=')"><i class="twitterIcon"></i>Tweet this article</a>
+        <a href="http://www.facebook.com" onclick="return popitup('http://www.facebook.com')"><i class="facebookIcon"></i>Share on Facebook</a>
+        <a href="mailto:abc@xyz.in?Subject=Yogalife Pose&amp;body=Hi" class="last"><i class="emailIcon"></i></a>
+    </div>
+
+    <div class="contentBox">
+        <%= image_tag(@pose.pose_image, :class => "articleImg", :width => 300, :height => 250) %>
+        <div><%= raw @pose.desc %></div> 
+    </div>
+    <div class="clr"></div>
+</div>
+<br><br>
+
+
+<!-- FB COMMENTS -->
+
+<div class="fb-comments" data-href= <%= request.url %> data-numposts="2" data-colorscheme="light"></div>

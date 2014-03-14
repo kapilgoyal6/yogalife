@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <title>Yogalife</title>
+
+
+  <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.core", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.slider", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.utils", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+
+<%= stylesheet_link_tag    "calendar", media: "all", "data-turbolinks-track" => true %>
+ 
+  
+</head>
+<body>
+<% @manage_advertisement = ManageAdvertisement.find_by_id(3) %>
+
+<div class="mainCon">
+
+  <!-- ┌──────────┐ -->
+  <!-- │TOP BANNER│ -->
+  <!-- └──────────┘ -->
+	<div class="topBanner"><%= link_to image_tag(@manage_advertisement.top_image), @manage_advertisement.top_url %></div>
+
+  <!-- ┌──────┐ -->
+  <!-- │HEADER│ -->
+  <!-- └──────┘ -->
+  <header class="header">
+  	<div class="fl">
+      <div class="logo"><a href="/home"><%= image_tag "logo.png" %></a></div>
+      <div class="logoTxt">yoga and inspired living in the middle east</div>
+    </div>
+    <div class="headerRight">
+    	<ul class="topLink">
+      	<li><a href="/mag">Magazine</a></li>
+      	<li><a href="#">Store</a></li>
+      	<li><a href="/contact">Contact</a></li>
+        <li class="search"><a href="javascript:void(0)" class="searchL"><i class="searchIcon"></i></a>
+        	<div class="searchBox" id="searchD">
+            <div class="searchInputbox">
+              <form action="/index/search" method="POST">
+                <input type="text" name="str" class="searchInput" value="Search Keyword" onfocus="clearText(this)" onblur="replaceText(this)">
+                <input type="image" src="/images/calender_next_arrow.gif">
+              </form>
+            <!-- <gcse:search></gcse:search> -->
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="topFollow">
+        <a href="http://www.twitter.com" class="twitter" target="_blank">&nbsp;</a>
+        <a href="http://www.facebook.com" class="facebook" target="_blank">&nbsp;</a>
+        <a href="http://www.youtube.com" class="youtube" target="_blank">&nbsp;</a>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </header>
+
+  <!-- ┌───────┐ -->
+  <!-- │NAV BAR│ -->
+  <!-- └───────┘ -->
+  <nav class="tab">
+  	<a class="mobLemuL" href="javascript:void(0)"><img src="images/mob_menu_bg.gif" alt=""></a>
+
+    <!-- ┌────────┐ -->
+    <!-- │TAB MENU│ -->
+    <!-- └────────┘ -->
+    <ul id="menu">
+    	<li><a href="/" class="sel">Home</a></li>
+	  	<li><a href="/pose/index" class="a">Pose</a>
+				<ul class="submenu">
+				 	<li><a href="/pose/pranayama">Pranayama</a></li>
+				 	<li><a href="/pose/community">Community</a></li>
+				 	<li><a href="/pose/asanas_and_sequences">Asanas and sequences</a></li>
+				 	<li><a href="/pose/pilates">Pilates</a></li>
+				 	<li><a href="/pose/yoga">Yoga</a></li>
+        </ul>
+			</li>
+      <li class=""><a href="/nourish/index" class="">Nourish</a>
+	  		<ul class="submenu" style="display: none;">
+				 	<li><a href="/nourish/restaurants_and_cafes">Restaurants and cafes</a></li>
+				 	<li><a href="/nourish/recipes">Recipes</a></li>
+				 	<li><a href="/nourish/nutrition">Nutrition</a></li>
+        </ul>
+      </li>
+    	<li class=""><a href="/heal/index" class="">Heal</a>
+				<ul class="submenu" style="display: none;">
+				 	<li class=""><a href="/heal/spirit">Spirit</a></li>
+				 	<li class=""><a href="/heal/mind">Mind</a></li>
+				 	<li class=""><a href="/heal/body">Body</a></li>
+        </ul>
+	  	</li>
+    	<li class=""><a href="/glow/index" class="">Glow</a>
+				<ul class="submenu" style="display: none;">
+				 	<li><a href="/glow/reviews">Reviews</a></li>
+				 	<li><a href="/glow/haircare">Haircare</a></li>
+				 	<li><a href="/glow/skincare">Skincare</a></li>
+        </ul>
+	  	</li>
+    	<li class=""><a href="/retreat/index" class="">Retreat</a>
+				<ul class="submenu" style="display: none;">
+				 	<li><a href="/retreat/international">International</a></li>
+				 	<li><a href="/retreat/local">Local</a></li>
+        </ul>
+	  	</li>
+  		<li class=""><a href="/green/index" class="">Green</a>
+				<ul class="submenu" style="display: none;">
+				 	<li class=""><a href="/green/living_green">Living Green</a></li>
+				 	<li class=""><a href="/green/planet_earth">Planet Earth</a></li>
+        </ul>
+	  	</li>
+    	<li><a href="/events" class="">Events</a></li>
+  		<li><a href="/directory" class="">Directory</a></li>
+      <li class=""><a href="/about" class="">About</a></li>
+    </ul>
+
+    <!-- ┌───────────┐ -->
+    <!-- │MOBILE MENU│ -->
+    <!-- └───────────┘ -->
+		<ul id="menuMob">
+    	<li><a href="/" class="sel">Home</a></li>
+    	<li><a href="/pose/index" class="">Pose</a></li>
+    	<li><a href="/nourish/index" class="">Nourish</a></li>
+    	<li><a href="/heal/index" class="">Heal</a></li>
+    	<li><a href="/glow/index" class="">Glow</a></li>
+    	<li><a href="/retreat/index" class="">Retreat</a></li>
+    	<li><a href="/green/index" class="">Green</a></li>
+    	<li><a href="/events" class="">Events</a></li>
+    	<li><a href="/directory" class="">Directory</a></li>
+     	<li><a href="/about" class="">About</a></li>
+    </ul>
+  </nav>
+
+
+
+<%= yield %>
+
+<!-- ┌──────┐ -->
+<!-- │FOOTER│ -->
+<!-- └──────┘ -->
+<footer class="footer">
+  Copyright © Yoga Life, 2013. All Rights Reserved.
+  <span>Web design by GO-Gulf.com</span>
+</footer>
+	
+
+
+
+</div>
+
+</body>
+</html>
+
+
+<!-- ┌─┐ -->
+<!-- ├─┤ -->
+<!-- └─┘ -->

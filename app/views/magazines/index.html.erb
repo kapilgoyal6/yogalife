@@ -10,10 +10,10 @@
       <table cellpadding="0" cellspacing="0" width="100%" class="table">
         <thead>
           <tr class="tableHdIner alt-row">
-              <td width="10%" class="first">S. NO</td>
-              <td width="15%">Magazine Name</td>
+              <td width="5%" class="first">S. NO</td>
+              <td width="10%">Magazine Name</td>
               <td width="10%">Issue Date</td>
-              <td width="10%">Description</td>
+              <td width="20%">Description</td>
               <td width="10%">Image</td>
               <td width="10%">Created</td>
               <td width="12%">Action</td>
@@ -23,9 +23,9 @@
           <% @magazines.each do |magazine| %>
             <tr class="tableDet">
                 <td class="first"><%= magazine.id %></td>
-                <td><%= magazine.title %></td>
+                <td><%= magazine.title.truncate(40) %></td>
                 <td><%= magazine.issue_date %></td>
-                <td><%= magazine.desc %></td>
+                <td><%= raw magazine.desc.truncate(150) %></td>
                 <td><%= image_tag(magazine.cover_image, :height => 25, :width => 25) if magazine.cover_image.present? %></td>
                 <td><%= magazine.created_at %></td>
                 <td align="center">

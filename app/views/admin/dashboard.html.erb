@@ -2,11 +2,11 @@
 	<div class="rightMid">
         <div class="mainHd">Dashboard</div>
         <div class="topText"><strong>Yoga Life</strong> Control Panel</div>
-        <div class="dashbordLink"><a href="#"><img src="assets/main_setting.png" alt=""><br>Admin<br>Account Settings</a>
+        <div class="dashbordLink"><%= link_to image_tag('main_setting.png') + "<br/>Admin<br/>Account Settings".html_safe,"#" %>
         </div>
-		<div class="dashbordLink"><a href="/cms"><img src="assets/cms_system.png" alt=""><br>CMS<br>System</a>
+		<div class="dashbordLink"><%= link_to image_tag('cms_system.png') + "<br/>CMS<br/>System".html_safe,"/cms" %>
 		</div>
-		<div class="dashbordLink"><a href="horoscopes"><img src="assets/horoscope-2-70x70.jpg" alt=""><br>Horoscopes<br></a>
+		<div class="dashbordLink"><%= link_to image_tag('horoscope-2-70x70.jpg') + "<br/>Horoscopes".html_safe,"/horoscopes" %>
 		</div>
         <div class="clr"></div>
 	</div>

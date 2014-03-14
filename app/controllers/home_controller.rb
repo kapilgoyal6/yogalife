@@ -10,23 +10,21 @@ class HomeController < ApplicationController
   	@manage_retreats = ManageRetreat.order('updated_at DESC').limit(1).all
   	@manage_greens = ManageGreen.order('updated_at DESC').limit(1).all
     @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
-    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1)
     @horoscopes = Horoscope.all
     @subscriber = Subscriber.new
 
 
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
-
     @shown_month = Date.civil(@year, @month)
-
     @event_strips = ManageEvent.event_strips_for_month(@shown_month)
   end
 
 
-  def magazine
+  def mag
     @cm = Cm.all
-  	@magazines = Magazine.find(:all, :order => 'cover_image')
+  	@magazines = Magazine.order('issue_date DESC')
     @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
     @subscriber = Subscriber.new
     @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
@@ -36,10 +34,17 @@ class HomeController < ApplicationController
   def events
     @cm = Cm.all
     @events = ManageEvent.order('updated_at DESC').page(params[:page]).per(6)
-    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
     @subscriber = Subscriber.new
-    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
-    render :layout => "category"
+
+
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @shown_month = Date.civil(@year, @month)
+    @event_strips = ManageEvent.event_strips_for_month(@shown_month)
+
+    render :layout => "events"
+
+
   end
 
   def directory
@@ -114,47 +119,115 @@ class HomeController < ApplicationController
 
   def viewnews
     @cm = Cm.all
-    @news = ManageNews.find_by_id(params[:id])
+    @news = ManageNews.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
+  end
+
+  def viewpose
+    @cm = Cm.all
+    @pose = ManagePose.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewnourish
     @cm = Cm.all
-    @nourish = ManageNourish.find_by_id(params[:id])
+    @nourish = ManageNourish.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewheal
     @cm = Cm.all
-    @heal = ManageHeal.find_by_id(params[:id])
+    @heal = ManageHeal.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewglow
     @cm = Cm.all
-    @glow = ManageGlow.find_by_id(params[:id])
+    @glow = ManageGlow.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewretreat
     @cm = Cm.all
-    @retreat = ManageRetreat.find_by_id(params[:id])
+    @retreat = ManageRetreat.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewgreen
     @cm = Cm.all
-    @green = ManageGreen.find_by_id(params[:id])
+    @green = ManageGreen.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
   end
 
   def viewmagazine
-    @cm = Cm.all
     @magazine = Magazine.find_by_id(params[:id])
+    # @attachments = Attachment.all
+    @attachments = Attachment.find_all_by_attachable_id(params[:id])
+    @count = Attachment.find_all_by_attachable_id(params[:id]).count
+    render :layout => false
+
   end
 
   def eventdetail
     @cm = Cm.all
-    @event = ManageEvent.find_by_id(params[:id])
+    @event = ManageEvent.find_by_slug(params[:id])
+    @event_images = EventImage.find_all_by_attachable_id(@event.id)
+    @subscriber = Subscriber.new
+
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @shown_month = Date.civil(@year, @month)
+    @event_strips = ManageEvent.event_strips_for_month(@shown_month)
+    
+    render :layout => "events"
+  end
+
+  def event
+    @cm = Cm.all
+    @events = ManageEvent.find_by_id(params[:id])
+    @event_images = EventImage.find_all_by_attachable_id(params[:id])
+    @subscriber = Subscriber.new
+
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @shown_month = Date.civil(@year, @month)
+    @event_strips = ManageEvent.event_strips_for_month(@shown_month)
+    
+    render :layout => "events"
   end
 
   def viewarticle
     @cm = Cm.all
-    @article = ManageArticle.find_by_id(params[:id])
+    @article = ManageArticle.find_by_slug(params[:id])
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @subscriber = Subscriber.new
+    @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
+    render :layout => "category"
+  end
+
+  def routing
+    render :layout => "routing"
   end
 
 end

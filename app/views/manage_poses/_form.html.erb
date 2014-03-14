@@ -25,7 +25,7 @@
   <div class="label">
     <%= f.label :sub_category, 'Pose Sub Category' %>
   </div>
-    <%= f.select :sub_category, options_for_select(%w[Pranayama Community Asanas_and_Sequences Pilates Yoga]) %>
+    <%= f.select :sub_category, options_for_select(%w[Pranayama Community Asanas_and_Sequences Pilates Yoga]), :prompt=>'Select Subcategory*' %>
   <div class="clr"></div><br/>
 
   <div class="label">
@@ -44,7 +44,7 @@
     <%= f.label :desc, 'Description' %>
   </div>
   <div class="fld">
-    <%= f.text_area :desc %>
+    <%= f.cktext_area :desc %>
   </div>
   <div class="clr"></div><br/>
 

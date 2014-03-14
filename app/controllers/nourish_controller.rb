@@ -2,7 +2,7 @@ class NourishController < ApplicationController
   def index
     @cm = Cm.all
   	@manage_nourishes = ManageNourish.all
-    @manage_magazines = Magazine.order('updated_at DESC').limit(1).all
+    @manage_magazines = Magazine.order('updated_at DESC').limit(1)
     @subscriber = Subscriber.new
     @manage_articles = ManageArticle.order('updated_at DESC').limit(4).all
   	render :layout => "category"	

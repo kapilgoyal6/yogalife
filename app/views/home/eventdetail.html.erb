@@ -1,46 +1,88 @@
-<section class="midCon clearfix">
-<aside class="midLeft">
-	<div class="bradcrumb"><a href="/home">Home</a><a href="/events">Events</a><span><%= truncate( raw( sanitize(@event.name) ), :length => 20, :omission => "...") %></span></div>
-	<div>
-        <h1><%= @event.name %></h1>
-        <div class="articleShare fr">
-        	<a class="twitter popup" href="http://twitter.com" onclick="return popitup('http://twitter.com/home?status=')"><i class="twitterIcon"></i>Tweet this article</a>
-            <a href="http://www.facebook.com" onclick="return popitup('http://www.facebook.com')"><i class="facebookIcon"></i>Share on Facebook</a>
-            <a href="mailto:abc@xyz.in?Subject=Yogalife News&amp;body=Hi" class="last"><i class="emailIcon"></i></a>
-        </div>
-        <div class="clr"></div>
-    	<div><%= @event.desc %></div>
-    	
-        <div id="rg-gallery" class="eventGallery rg-gallery">
-        	<div class="rg-view">
-        		<a href="#" class="rg-view-full"></a>
-        		<a href="#" class="rg-view-thumbs rg-view-selected"></a>
-    		</div>
-            <div class="rg-thumbs">
-                <div class="es-carousel-wrapper">
-                    <div class="es-carousel">
-                        <ul style="width: 800px; display: block; margin-left: -95px;">
-                            <li style="margin-right: 10px; width: 65px;" class=""><a href="#" style="border-width: 0px;"><%= image_tag(@event.event_image, :height => 150) %></a></li>
-                        </ul>
-                    </div>
-                <!-- <div class="es-nav">
-                	<span class="es-nav-prev" style="display: inline;">Previous</span>
-                	<span class="es-nav-next" style="display: none;">Next</span>
-            	</div> -->
-        	</div>
-        </div>
-        <!-- <div class="rg-image-wrapper">
-        	<div class="rg-image-nav">
-        		<a href="#" class="rg-image-nav-prev">Previous</a>
-        		<a href="#" class="rg-image-nav-next">Next</a>
-    		</div>
-    		<div class="rg-image"><img src="http://100.100.7/anuj/yogalife/public/media/news/event_image_1__1390473587.jpg"></div>
-    		<div class="rg-loading" style="display: none;"></div>
-    		<div class="rg-caption-wrapper">
-    			<div class="rg-caption" style="display:none;"><p></p></div>
-			</div>
-		</div> -->
-	</div>
+<div class="bradcrumb"><a href="/home">Home</a><a href="/events">Events</a><span><%= @event.name.truncate(20) %></span>
 </div>
-</aside>
-</section>
+
+<div>
+    <h1><%= @event.name %></h1>
+    <div class="articleShare fr">
+    	<a class="twitter popup" href="http://twitter.com" onclick="return popitup('http://twitter.com/home?status=')"><i class="twitterIcon"></i>Tweet this article</a>
+        <a href="http://www.facebook.com" onclick="return popitup('http://www.facebook.com')"><i class="facebookIcon"></i>Share on Facebook</a>
+        <a href="mailto:abc@xyz.in?Subject=Yogalife News&amp;body=Hi" class="last"><i class="emailIcon"></i></a>
+    </div>
+    <div class="clr"></div>
+	<div><%= raw @event.desc %></div>
+    <br>
+    <br>
+
+<% if EventImage.exists?(attachable_id: @event.id) %>
+
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 685px;
+        height: 456px; background: #24262e; overflow: hidden;">
+
+        <!-- Loading Screen -->
+        <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                background-color: #000000; top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+            <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                top: 0px; left: 0px;width: 100%;height:100%;">
+            </div>
+        </div>
+
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
+        
+            <% for e in @event_images %>
+                <% if !e.file.blank? %>
+                    <div>
+                        <img u="image" src= <%= e.file %> />
+                        <img u="thumb" src= <%= e.file %> />
+                    </div>
+                <% end %>
+            <% end %>  
+
+        </div>
+        
+        <!-- ThumbnailNavigator Skin Begin -->
+        <div u="thumbnavigator" class="jssort07" style="position: absolute; width: 685px; height: 100px; left:0px; bottom: 0px;">
+            <!-- Thumbnail Item Skin Begin -->
+            <style>
+                
+            </style>
+            
+            <div u="slides" style="cursor: move;">
+                <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 72px; HEIGHT: 72px; TOP: 0; LEFT: 0;">
+                    <ThumbnailTemplate class="i" style="position:absolute;"></ThumbnailTemplate>
+                    <div class="o">
+                    </div>
+                </div>
+            </div>
+            <!-- Thumbnail Item Skin End -->
+        </div>
+        <!-- ThumbnailNavigator Skin End -->
+        <a style="display: none" href="http://www.jssor.com">jQuery Gallery</a>
+        <!-- Trigger -->
+        <script>
+            jssor_slider_event('slider1_container');
+        </script>
+    </div>
+
+
+
+<% end %>
+
+<br>
+<br>
+</div>
+
+
+<!-- FB COMMENTS -->
+
+
+
+
+<div id="fb-root"></div>
+
+<div class="fb-comments" data-href= <%= request.url %> data-numposts="2" data-colorscheme="light"></div>
+
+
+

@@ -1,16 +1,25 @@
-<div class="bradcrumb"><a href="/home">Home</a><span>Events</span></div>
+<div class="bradcrumb"><a href="/">Home</a><span>Events</span></div>
 
 <div>
     <ul class="articleBox">
         <% @events.each do |event| %>
             <li>
                 <div class="articleLeft">
-                    <%= link_to image_tag(event.event_image, :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.id %>
+                    <% if event.event_image.present? %>
+                        <%= link_to image_tag(event.event_image, :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.slug %>
+                    <% else %>
+                        <%= link_to image_tag("default_image.gif", :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.slug %>
+                    <% end %>
                 </div>
                 <div class="articleRight">
-                    <div class="hd"><%= link_to event.name, :controller => 'home', :action => 'eventdetail', :id => event.id %></div>
-                    <div class="by"><%= event.event_date %></div>
-                    <div><%= event.desc %></div>
+                    <div class="hd"><%= link_to event.name, :controller => 'home', :action => 'eventdetail', :id => event.slug %></div>
+                    <div class="by">
+                        <% if event.start_at.present? %>
+                            <%= event.start_at.strftime("%b %d") %> - <%= event.end_at.strftime("%b %d") %>
+                        <% else %>
+                        <% end %>
+                    </div>
+                    <div><%= raw event.desc.truncate(250) %></div>
                     </div>
                 <div class="clr"></div>
             </li>

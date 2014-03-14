@@ -3,11 +3,11 @@
 	<ul class="articleBox">
 		<% @manage_retreats.each do |retreat| %>
 	    	<li>
-                <div class="articleLeft"><%= link_to image_tag(retreat.image, :height => 150), :controller => 'home', :action => 'viewretreat', :id => retreat.id %></div>
+                <div class="articleLeft"><%= link_to image_tag(retreat.image, :height => 150), :controller => 'home', :action => 'viewretreat', :id => retreat.slug %></div>
                 <div class="articleRight">
-                    <div class="hd"><%= link_to retreat.title, :controller => 'home', :action => 'viewretreat', :id => retreat.id %></div>
+                    <div class="hd"><%= link_to retreat.title, :controller => 'home', :action => 'viewretreat', :id => retreat.slug %></div>
                     <div class="by">By <%= retreat.created_by %>&nbsp;&nbsp;<%= retreat.updated_at.strftime("%d %B %Y") %></div>
-                    <div><%= retreat.desc %></div>
+                    <div><%= raw retreat.desc.truncate(250) %></div>
                 </div>
                 <div class="clr"></div>
             </li>

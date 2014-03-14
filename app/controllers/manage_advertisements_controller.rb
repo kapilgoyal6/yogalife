@@ -69,6 +69,6 @@ class ManageAdvertisementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manage_advertisement_params
-      params.require(:manage_advertisement).permit(:right_add_image, :right_url, :mid_add_image, :mid_url)
+      params.require(:manage_advertisement).permit(:top_image, :top_url, :mid_image, :mid_url, :bottom_image, :bottom_url)
     end
 end

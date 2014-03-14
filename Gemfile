@@ -1,10 +1,20 @@
 source 'http://rubygems.org'
 
+gem 'friendly_id'
 
+# gem 'turbolinks-js'
+
+
+gem "paperclip", "~> 3.0"
+
+
+gem "bcrypt-ruby", :require => "bcrypt"
 # gem 'activeadmin', github: 'gregbell/active_admin'
 
 # gem 'rails_admin'
 
+
+# KAMINARI for Pagination	
 gem 'kaminari'
 
 gem 'jquery-turbolinks'

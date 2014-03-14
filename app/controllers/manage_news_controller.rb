@@ -64,7 +64,7 @@ class ManageNewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_manage_news
-      @manage_news = ManageNews.find(params[:id])
+      @manage_news = ManageNews.find_by_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

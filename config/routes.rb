@@ -1,5 +1,32 @@
 Yogalife::Application.routes.draw do
 
+
+get 'sort_by(/:id)', :controller => 'events',  :action => 'sort_by'
+get 'category(/:id)', :controller => 'events',  :action => 'category'
+  # get "events/sort_by"
+
+#   get "log_out" => "sessions#destroy", :as => "log_out"
+# get "log_in" => "sessions#new", :as => "log_in"
+# get "sign_up" => "users#new", :as => "sign_up"
+
+# get "log_out" => "sessions#destroy", :as => "log_out"
+# get "admin/login" => "sessions#new", :as => "log_in"
+# get "sign_up" => "users#new", :as => "sign_up"
+
+
+get "log_out" => "sessions#destroy", :as => "log_out"
+# get "admin/login" => "admin#new", :as => "log_in"
+
+get 'admin/login', :controller => 'admin',  :action => 'show'
+post '/admin', :controller => 'admin',  :action => 'admin'
+
+# root :to => "users#new"
+# resources :users
+resources :sessions
+
+
+  # get "sessions/new"
+  # get "users/new"
   # match '/controller_name(/:year(/:month))' => 'controller_name#index', :as => :controller_name, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   # mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :subscribers
@@ -42,11 +69,11 @@ Yogalife::Application.routes.draw do
   get "search_results/index"
   get "search_results/searchbox"
 
-  get '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  # get '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   get "home/index"
 
-  get "/magazine" => 'home#magazine'
+  get "/mag" => 'home#mag'
   get "/contact" => 'home#contact'
   get "/events" => 'home#events'
   get "/directory" => 'home#directory'
@@ -59,7 +86,11 @@ Yogalife::Application.routes.draw do
   get "/article" => 'home#article'
 
 get 'viewnews(/:id)', :controller => 'home',  :action => 'viewnews'
-get 'events(/:id)', :controller => 'home',  :action => 'eventdetail'
+
+get 'eventdetail(/:id)', :controller => 'home',  :action => 'eventdetail'
+get 'events(/:id)', :controller => 'home',  :action => 'event'
+
+get 'viewpose(/:id)', :controller => 'home',  :action => 'viewpose'
 get 'viewnourish(/:id)', :controller => 'home',  :action => 'viewnourish'
 get 'viewheal(/:id)', :controller => 'home',  :action => 'viewheal'
 get 'viewglow(/:id)', :controller => 'home',  :action => 'viewglow'
@@ -98,6 +129,8 @@ get 'viewarticle(/:id)', :controller => 'home',  :action => 'viewarticle'
 
   resources :manage_news
 
+  # resources :horoscopes, :defaults => {:format => :json}
+
   resources :horoscopes
 
   resources :cities
@@ -110,11 +143,20 @@ get 'viewarticle(/:id)', :controller => 'home',  :action => 'viewarticle'
 
   resources :admin
 
+  resource :admin
+
+
+
+  # get "admin" => "sessions#new", :as => "log_i"
+
+
+
+
   resources :home
 
 
   root "home#index"
-  get "admin/dashboard"
+  # get "admin/dashboard"
 
   # post "horoscopes/uploadFile"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -171,4 +213,5 @@ get 'viewarticle(/:id)', :controller => 'home',  :action => 'viewarticle'
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get '*rest' => "home#routing"
 end

@@ -10,7 +10,7 @@
       <table cellpadding="0" cellspacing="0" width="100%" class="table">
         <thead>
           <tr class="tableHdIner alt-row">
-              <td width="10%" class="first">S. NO</td>
+              <td width="5%" class="first">S. NO</td>
               <td width="15%">Business Title</td>
               <td width="10%">Subcategory</td>
               <td width="10%">Phone No.</td>
@@ -27,7 +27,7 @@
                 <td><%= manage_directory.sub_category %></td>
                 <td><%= manage_directory.phone_no %></td>
                 <td><%= manage_directory.email %></td>
-                <td><%= manage_directory.created_at %></td>
+                <td><%= manage_directory.created_at.strftime('%d-%b-%Y') %></td>
                 <td align="center">
                   <%= link_to image_tag("view.gif", :title => "View"), manage_directory %>&nbsp;&nbsp;
                   <%= link_to image_tag("edit.png", :title => "Edit"), edit_manage_directory_path(manage_directory) %>&nbsp;&nbsp;

@@ -1,91 +1,41 @@
-<section class="midCon clearfix">
-<aside class="midLeft">
-
 <!-- BANNER -->
-    
-<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 685px; height: 460px;">
+<% @manage_advertisement = ManageAdvertisement.find_by_id(3) %>
+<div class="banner">
+<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 765px; height: 460px;">
 <!-- Slides Container -->
-    <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 685px; height: 460px;">
+    <div u="slides" style="cursor:move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 765px; height: 460px;" class="asdfg">
+
+    <% @banners.each do |banner| %>
         <div>
-            <%= image_tag 'banner_img.jpg' %>
-            <div class="ls-s2 l1-s1" style="position: absolute; top: 140px; left: auto; right: 0px; display: block; width: auto; height: auto; font-size: 14px; padding: 0px; border-width: 0px; margin-left: 0px; margin-top: 0px; opacity: 0.961550084261928;">
-                <div class="bannerBox">
-                    <span class="bannerHd">
-                        <%= image_tag 'banner_txt.png' %>
-                    </span>
-                    <span class="bannerSubHd">1 Fabulous four for radiant skin</span>
-                    <div class="bannerTxt">
-                        Nutritionist, wellbeing and yoga consultant Laura Holland identies four foods you should be eating and applying for a gorgeous glow
-                    </div>
-                    <div class="learnMore"><a href="http://www.google.com" target="_blank">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <%= image_tag 'banner_img.jpg' %>
+            <%= image_tag (banner.image) %>
             <!-- <img u="image" src="images/banner_img.jpg" /> -->
             <div class="ls-s2 l1-s1" style="position: absolute; top: 140px; left: auto; right: 0px; display: block; width: auto; height: auto; font-size: 14px; padding: 0px; border-width: 0px; margin-left: 0px; margin-top: 0px; opacity: 0.961550084261928;">
                 <div class="bannerBox">
                     <span class="bannerHd">
                         <%= image_tag 'banner_txt.png' %>
                     </span>
-                    <span class="bannerSubHd">2 Fabulous four for radiant skin</span>
+                    <span class="bannerSubHd">Fabulous four for radiant skin</span>
                     <div class="bannerTxt">
                         Nutritionist, wellbeing and yoga consultant Laura Holland identies four foods you should be eating and applying for a gorgeous glow
                     </div>
-                    <div class="learnMore"><a href="http://www.google.com" target="_blank">Learn More</a>
+                    <div class="learnMore"><%= link_to "Learn More", banner.url %>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <style>
-        .jssord01l, .jssord01r, .jssord01ldn, .jssord01rdn
-        {
-            position: absolute;
-            cursor: pointer;
-            display: block;
-            background: url(../images/d09.png) no-repeat;
-            overflow:hidden;
-        }
-        .jssord01l { background-position: -8px -38px; }
-        .jssord01r { background-position: -68px -38px; }
-        .jssord01ldn { background-position: -8px -38px; }
-        .jssord01rdn { background-position: -68px -38px; }
-
-
-
-        .jssorn12 div, .jssorn12 div:hover, .jssorn12 .av
-        {
-            background: url(../images/n12.png) no-repeat;
-            overflow:hidden;
-            cursor: pointer;
-        }
-        .jssorn12 div { background-position: -7px -7px; }
-        .jssorn12 div:hover, .jssorn12 .av:hover { background-position: -37px -7px; }
-        .jssorn12 .av { background-position: -67px -7px; }
-        .jssorn12 .dn, .jssorn12 .dn:hover { background-position: -97px -7px; }
+    <% end %>
         
-    </style>
+    </div>
     <span u="arrowleft" class="jssord01l" style="width: 45px; height: 45px; top: 123px; left: 8px;">
     </span>
     <span u="arrowright" class="jssord01r" style="width: 45px; height: 45px; top: 123px; right: 8px">
     </span>
-    <div u="navigator" class="jssorn12" style="position: absolute; bottom: 16px; right: 6px;">
-            <!-- navigator item prototype -->
-        <div u="prototype" style="POSITION: absolute; WIDTH: 16px; HEIGHT: 16px;"></div>
-    </div>
+    
     <script>
         jssor_slider1_starter('slider1_container');
     </script>
 </div>
-
-
-
-<br>
-<br>
-<br>
+</div>
 
 
 
@@ -97,7 +47,7 @@
         <% @manage_news.each do |news| %>
             <div class="newsBox">
                 <div class="newImg">
-                    <%= link_to image_tag(news.news_image, :height => 250), :controller => 'home', :action => 'viewnews', :id => news.id %>
+                    <%= link_to image_tag(news.news_image, :height => 250), :controller => 'home', :action => 'viewnews', :id => news.slug %>
                 </div>
                 <div class="newsDet">
                     <div class="newsHd"><%= truncate( raw( sanitize(news.title) ), :length => 20, :omission => "...") %></div>
@@ -116,16 +66,16 @@
     <h1>Nourish</h1>
     <div class="clearfix">
         <% @manage_nourishes.each do |nourish| %>
-            <div class="nourishLeft"><%= link_to image_tag(nourish.image, :height => 150), :controller => 'home', :action => 'viewnourish', :id => nourish.id %></div>
+            <div class="nourishLeft"><%= link_to image_tag(nourish.image, :height => 150), :controller => 'home', :action => 'viewnourish', :id => nourish.slug %></div>
             <div class="nourishRight">
-                <div class="hd"><%= link_to nourish.title, :controller => 'home', :action => 'viewnourish', :id => nourish.id %></div>
+                <div class="hd"><%= link_to nourish.title.truncate(35), :controller => 'home', :action => 'viewnourish', :id => nourish.slug %></div>
                 <div class="by">By <span><%= nourish.created_by %></span> - <%= nourish.updated_at.strftime("%d-%b-%Y") %></div>
-                <div><%= nourish.desc %></div>
+                <div><%= raw nourish.desc.truncate(600) %></div>
             </div>
         <% end %>
     </div>
 </div>
-
+<br>
 
 <!-- HEAL -->
 
@@ -133,24 +83,24 @@
     <h1>HEAL</h1>
     <div class="clearfix">
         <% @manage_heals.each do |heal| %>
-            <div class="nourishLeft"><%= link_to image_tag(heal.image, :height => 150), :controller => 'home', :action => 'viewheal', :id => heal.id %></div>
+            <div class="nourishLeft"><%= link_to image_tag(heal.image, :height => 150), :controller => 'home', :action => 'viewheal', :id => heal.slug %></div>
             <div class="nourishRight">
-                <div class="hd"><%= link_to heal.title, :controller => 'home', :action => 'viewheal', :id => heal.id %></div>
+                <div class="hd"><%= link_to heal.title.truncate(35), :controller => 'home', :action => 'viewheal', :id => heal.slug %></div>
                 <div class="by">By <span><%= heal.created_by %></span> - <%= heal.updated_at.strftime("%d-%b-%Y") %></div>
-                <div><span style="font-size: medium;"><%= heal.desc %></span></div>
+                <div><%= raw heal.desc.truncate(600) %></div>
             </div>
         <% end %>
     </div>
 </div>
 
-
+<br>
 <!-- GLOW RETREAT GREEN -->
 
 <div class="clearfix">
     <div class="glowBox">
         <h1>GLOW</h1>
         <% @manage_glows.each do |glow| %>
-        <div class="glowImg"><%= link_to image_tag(glow.image, :height => 150), :controller => 'home', :action => 'viewglow', :id => glow.id %></div>
+        <div class="glowImg"><%= link_to image_tag(glow.image, :height => 150), :controller => 'home', :action => 'viewglow', :id => glow.slug %></div>
         <ul class="gloeLink">
             <li><a href="">Catching up with Kathryn</a></li>
             <li><a href="">Skin care by ayurveda</a></li>
@@ -161,7 +111,7 @@
     <div class="retreatBox">
         <h1>Retreat</h1>
         <% @manage_retreats.each do |retreat| %>
-            <div class="glowImg"><%= link_to image_tag(retreat.image, :height => 150), :controller => 'home', :action => 'viewretreat', :id => retreat.id %></div>
+            <div class="glowImg"><%= link_to image_tag(retreat.image, :height => 150), :controller => 'home', :action => 'viewretreat', :id => retreat.slug %></div>
             <ul class="gloeLink">
                 <li><a href="">Balasana</a></li>
                 <li><a href="">Retreat Mind</a></li>
@@ -172,7 +122,7 @@
     <div class="greenBox">
         <h1>Green</h1>
         <% @manage_greens.each do |green| %>
-            <div class="glowImg"><%= link_to image_tag(green.image, :height => 150), :controller => 'home', :action => 'viewgreen', :id => green.id %></div>
+            <div class="glowImg"><%= link_to image_tag(green.image, :height => 150), :controller => 'home', :action => 'viewgreen', :id => green.slug %></div>
             <ul class="gloeLink">
                 <li><a href="">Green Planet</a></li>
                 <li><a href="">From darkness to light</a></li>
@@ -185,147 +135,4 @@
 
 <!-- LEFT BANNER -->
 
-<div class="leftBanner"><%= image_tag 'left_banner.jpg' %></div>
-</aside>
-
-
-
-<!-- Right Side -->
-
-<aside class="midRight">
-<!--Rightbanner -->
-    <div class="rightBanner"><a href="http://www.google.com" target="_blank"><%= image_tag 'right_banner.jpg' %></a></div>
-    <div class="clr"></div>
-            
-
-
-
-
-
-
-<!--Calender -->
-<%= raw(event_calendar) %>
-<!-- END CALENDAR -->
-    <div class="clr"></div>
-
-<!--Most Popular -->
-<div class="mostPopCon">
-    <h1>Most Popular</h1>
-    <div>
-        <!-- <div class="populaTab">
-            <ul>
-                <li><a href="javascript:void(0)" class="active" id="mp1" onclick="tab_show('mp','1')">Shared</a></li>
-                <li><a href="javascript:void(0)" id="mp2" onclick="tab_show('mp','2')">Read</a></li>
-            </ul>
-        </div> -->
-        <div class="popularCon" id="mp_1">
-            <% @manage_articles.each do |articles| %>
-                <div class="popularBox clearfix">
-                    <div class="lft"><%= link_to image_tag(articles.image, :height => 65, :width => 81), :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
-                    <div class="rgt"><%= link_to articles.title, :controller => 'home', :action => 'viewarticle', :id => articles.id %></div>
-                </div>
-            <% end %>
-        </div>
-    </div>
-</div>
-<div class="clr"></div>            
-           
-<!--A Quote a Day -->
-<div class="botSpace">
-    <h1>A Quote a Day</h1>
-    <div>
-        <div class="qadTxt">Underneath please write: Sign up for a daily inspirational quote from YogaLife</div>
-        <!-- <form name="f1" id="f1" action="" method="post" onsubmit="return validate();">
-            <div class="qadInputBox">
-                <input type="text" name="user_email" id="user_email" value="Email Address" class="qadInput" onfocus="clearText(this);getemail(this.value);" onblur="replaceText(this);getemail(this.value);" onmouseout="getemail(this.value);" onkeyup="getemail(this.value);">
-                <input type="image" src="images/email_icon.gif"><br>
-            </div>
-            <div id="error6" style="color:red;"></div>
-            <div id="error7" style="color:red;"></div>
-        </form> -->
-
-        <div class="qadInputBox">
-            <%= form_for @subscriber, :remote => true do |f| %>
-                <%= f.text_field :email, class: 'qadInput', :value => "Email Address", :onclick => "this.value='';" %>
-                <%= image_submit_tag("", class: 'messageBtn') %>
-            <% end %>
-        </div>
-
-
-    </div>
-</div>
-<div class="clr"></div>
-          
-<!--Magazine Preview -->
-<div class="clearfix">
-    <% @manage_magazines.each do |magazine| %>
-    <div class="magzineLeft"><%= image_tag(magazine.cover_image, :height => 162, :width => 129) %></div>
-    <div class="magzineRight">
-        <span class="magzineHd"><%= magazine.title %></span>
-        <div class="magzineTxt"><%= magazine.desc %>
-        <div class="menu_fancy viewMag">
-            <%= link_to 'View Mag', {:controller => 'home', :action => 'viewmagazine', :id => magazine.id}, :class => "menu_fancy viewMag" %>
-            <!-- <a href="#" class="menu_fancy viewMag" data-fancybox-type="iframe">View Mag</a> -->
-        </div>
-        </div>
-    <% end %>
-    </div>
-</div>
-<div class="clr"></div>
-
-
-<!--Follow Twitter -->
-<div class="twitterCon">
-    <h1 class="twitterBird">FOLLOW US ON FOR Mind, Body &amp; Spirit UPDATES</h1>
-    <ul class="twitterBox">
-    <br>
-    </ul>
-</div>
-<div class="clr"></div>
-
-
-<!-- HOROSCOPES -->
-<div class="botSpace">
-<div class="horoscopeBox">    
-    <div id="slideshow">
-        <div class="horArrow"><a href="javascript:void(0)" id="prev"><img src="images/hor_prev_arrow.gif" alt=""></a> <a href="javascript:void(0)" id="next"><img src="images/hor_next_arrow.gif" alt=""></a></div>
-        <ul>
-            <% @horoscopes.each do |horos| %>
-            <li style="background-image: url(images/horoscope_bg.png); background-color: rgb(255, 255, 255);  overflow: hidden; float: left; width: 210px; height: 263px; background-position: 50% 100%; background-repeat: no-repeat no-repeat;">
-                <div class="horHd" style="background:url(<%= horos.logo.url -%>) no-repeat 0 0;background-size: 48px 48px;"><%= horos.title %>
-                <span>(<%= horos.subtitle %>)</span>
-                </div>
-                <div class="horDate">
-                    <%= horos.start_date.strftime("%B %d") %>-<%= horos.end_date.strftime("%B %d") %>
-                </div>
-                <div class="horTxt"><%= raw(horos.desc) %></div>
-            </li>
-            <% end %>
-        </ul>
-    </div>
-</div>
-</div>
-<div class="clr"></div>
-            
-
-<!-- FOLLOW US -->
-<div class="botSpace">
-    <h1>Follow us</h1>
-    <div class="followUs">
-    <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
-    <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
-    <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
-    <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
-    </div>
-</div>
-<div class="clr"></div>
-
-
-
-</aside>
-</section>
+<div class="leftBanner"><%= link_to image_tag(@manage_advertisement.bottom_image), @manage_advertisement.bottom_url %></div>

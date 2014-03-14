@@ -58,9 +58,9 @@
           <% @subcategories.each do |subcategory| %>
             <tr class="tableDet">
                 <td class="first"><%= subcategory.id %></td>
-                <td><%= subcategory.cat_name %></td>
-                <td><%= subcategory.sub_cat_name %></td>
-                <td><%= subcategory.desc %></td>
+                <td><%= subcategory.cat_name.truncate(40) %></td>
+                <td><%= subcategory.sub_cat_name.truncate(40) %></td>
+                <td><%= raw subcategory.desc.truncate(140) %></td>
                 <!-- <td>
                   <div id="status13"><a href="#">Active</a></div>
                 </td> -->

@@ -30,7 +30,7 @@
     <% @wheretobuys.each do |wheretobuy| %>
       <tr class="tableDet">
         <td class="first"><%= wheretobuy.id %></td>
-        <td><%= wheretobuy.address %></td>
+        <td><%= wheretobuy.address.truncate(140) %></td>
         <td><%= wheretobuy.country %></td>
         <td><%= wheretobuy.city %></td>
         <td><%= wheretobuy.w_days %></td>

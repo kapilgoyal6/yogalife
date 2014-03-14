@@ -17,9 +17,8 @@
         <tbody>
           <% i = 0 %>
           <% @subscribers.each do |subscriber| %>
-            <% i = i + 1 %>
             <tr class="tableDet">
-              <td class="first"><%= i %></td>
+              <td class="first"><%= i = i + 1 %></td>
               <td><%= subscriber.email %></td>
               <td><%= subscriber.created_at.strftime("%d-%b-%Y") %></td>
               <td align="center">

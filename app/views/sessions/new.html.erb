@@ -1,0 +1,57 @@
+<!-- <h1>Log in</h1>
+
+<%= form_tag sessions_path do %>
+  <p>
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email] %>
+  </p>
+  <p>
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </p>
+  <p class="button"><%= submit_tag "Log in" %></p>
+<% end %> -->
+
+
+<%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+
+
+<%= form_tag sessions_path do %>
+	<div class="lgoingOut">
+		<div class="innerbg">
+			<div class="loginCon">
+				<div class="loginBox">
+			    	<div class="loginHd">Administration Login</div>
+
+			        <div class="loginField">Username:</div>
+			        <div class="loginLabal">
+			        <!-- <div class="loginInput"> -->
+						<!-- <input type="text" name="email" id="email" value="" class="loginInput" size="40"> -->
+						<%= text_field_tag :email, params[:email] %>
+					<!-- </div> -->
+					</div>
+			        <div class="clr"></div>
+
+			        <div class="loginField">Password:</div>
+			        <div class="loginLabal">
+			        <!-- <div class="loginInput"> -->
+						<!-- <input type="password" name="password" id="password" value="" class="loginInput" size="40"> -->
+						<%= password_field_tag :password %>
+					<!-- </div> -->
+					</div>
+			        <div class="clr"></div>
+
+			       
+
+			        <div class="loginField"></div>
+			        <div class="loginLabal">
+						<!-- <input type="image" name="submit" id="submitbutton" src="images/signin_btn.gif" alt=""> -->
+						<p class="button"><%= submit_tag "Log in" %></p>
+					</div>
+			        <div class="clr"></div>
+
+			    </div>
+			</div>
+		</div>
+	</div>
+<% end %>

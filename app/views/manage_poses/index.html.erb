@@ -10,26 +10,27 @@
       <table cellpadding="0" cellspacing="0" width="100%" class="table">
         <thead>
           <tr class="tableHdIner alt-row">
-            <td width="10%" class="first">S. NO</td>
-            <td>Pose Title</td>
-            <td>Pose Image</td>
-            <td>Description</td>
-            <td>Author</td>
-            <td>Created</td>
-            <td>Updated</td>
-            <td>Action</td>
+            <td width="5%" class="first">S. NO</td>
+            <td width="10%">Pose Title</td>
+            <td width="10%">Pose Image</td>
+            <td width="20%">Description</td>
+            <td width="10%">Author</td>
+            <td width="10%">Created</td>
+            <td width="10%">Updated</td>
+            <td width="12%">Action</td>
           </tr>
         </thead>
         <tbody>
+          <% i = 0 %>
           <% @manage_poses.each do |manage_poses| %>
             <tr class="tableDet">
-              <td class="first"><%= manage_poses.id %></td>
-              <td><%= manage_poses.title %></td>
+              <td class="first"><%= i = i + 1 %></td>
+              <td><%= manage_poses.title.truncate(40) %></td>
               <td><%= image_tag(manage_poses.pose_image, :width => 25, :height =>30) if manage_poses.pose_image.present? %></td>
-              <td><%= manage_poses.desc %></td>
+              <td><%= raw manage_poses.desc.truncate(140) %></td>
               <td><%= manage_poses.author %></td>
-              <td><%= manage_poses.created_at %></td>
-              <td><%= manage_poses.updated_at %></td>
+              <td><%= manage_poses.created_at.strftime('%d-%b-%Y') %></td>
+              <td><%= manage_poses.updated_at.strftime('%d-%b-%Y') %></td>
               <td align="center">
                 <%= link_to image_tag("view.gif", :title => "View"), manage_poses %>&nbsp;&nbsp;
                 <%= link_to image_tag("edit.png", :title => "Edit"), edit_manage_pose_path(manage_poses) %>&nbsp;&nbsp;

@@ -1,0 +1,36 @@
+<title>Yogalife</title>
+<%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+
+
+<%= form_tag ('/admin') do %>
+	<div class="lgoingOut">
+		<div class="innerbg">
+			<div class="loginCon">
+				<div class="loginBox">
+			    	<div class="loginHd">Administration Login</div>
+
+			        <div class="loginField">Username:</div>
+			        <div class="loginLabal">
+						<%= text_field_tag :email, params[:email] %>
+					</div>
+			        <div class="clr"></div>
+
+			        <div class="loginField">Password:</div>
+			        <div class="loginLabal">
+						<%= password_field_tag :password %>
+					</div>
+			        <div class="clr"></div>
+
+			       
+
+			        <div class="loginField"></div>
+			        <div class="loginLabal">
+						<p class="button"><%= submit_tag "Log in" %></p>
+					</div>
+			        <div class="clr"></div>
+
+			    </div>
+			</div>
+		</div>
+	</div>
+<% end %>

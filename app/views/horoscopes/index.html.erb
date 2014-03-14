@@ -13,27 +13,28 @@
 <table cellpadding="0" cellspacing="0" width="100%" class="table">
   <thead>
     <tr class="tableHdIner alt-row">
-      <td width="10%" class="first">S. NO</td>
-      <td>Title</td>
+      <td width="5%" class="first">S. NO</td>
+      <td width="10%">Title</td>
       <td width="10%">Logo Image</td>
       <td width="10%">Background Image</td>
       <td width="20%">Description</td>
-      <td>Start Date</td>
-      <td>End Date</td>
-      <td>Action</td>
+      <td width="10%">Start Date</td>
+      <td width="10%">End Date</td>
+      <td width="12%">Action</td>
     </tr>
   </thead>
 
   <tbody>
+    <% i = 0 %>
     <% @horoscopes.each do |horoscope| %>
       <tr class="tableDet">
-        <td class="first"><%= horoscope.id %></td>
-        <td><%= horoscope.title %></td>
+        <td class="first"><%= i = i + 1 %></td>
+        <td><%= horoscope.title.truncate(40) %></td>
         <td><%= image_tag(horoscope.logo_url, :width => 25) if horoscope.logo.present? %></td>
         <td><%= image_tag(horoscope.background_url, :width => 25) if horoscope.background.present? %></td>
-        <td><%= truncate( raw( sanitize(horoscope.desc) ), :length => 100, :omission => "...") %></td>
-        <td><%= horoscope.start_date %></td>
-        <td><%= horoscope.end_date %></td>
+        <td><%= raw horoscope.desc.truncate(140) %></td>
+        <td><%= horoscope.start_date.strftime('%d-%b-%Y') %></td>
+        <td><%= horoscope.end_date.strftime('%d-%b-%Y') %></td>
         <td align="center">
           <%= link_to image_tag("view.gif", :title => "View"), horoscope %>&nbsp;&nbsp;
           <%= link_to image_tag("edit.png", :title => "Edit"), edit_horoscope_path(horoscope) %>&nbsp;&nbsp;

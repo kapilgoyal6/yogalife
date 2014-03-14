@@ -3,11 +3,11 @@
 	<ul class="articleBox">
 		<% @manage_greens.each do |green| %>
 	    	<li>
-                <div class="articleLeft"><%= link_to image_tag(green.image, :height => 150), :controller => 'home', :action => 'viewgreen', :id => green.id %></div>
+                <div class="articleLeft"><%= link_to image_tag(green.image, :height => 150), :controller => 'home', :action => 'viewgreen', :id => green.slug %></div>
                 <div class="articleRight">
-                    <div class="hd"><%= link_to green.title, :controller => 'home', :action => 'viewgreen', :id => green.id %></div>
+                    <div class="hd"><%= link_to green.title, :controller => 'home', :action => 'viewgreen', :id => green.slug %></div>
                     <div class="by">By <%= green.created_by %>&nbsp;&nbsp;<%= green.updated_at.strftime("%d %B %Y") %></div>
-                    <div><%= green.desc %></div>
+                    <div><%= raw green.desc.truncate(250) %></div>
                 </div>
                 <div class="clr"></div>
             </li>

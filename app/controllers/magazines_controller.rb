@@ -15,6 +15,9 @@ class MagazinesController < ApplicationController
   # GET /magazines/new
   def new
     @magazine = Magazine.new
+    # attachment = @magazine.attachments.build
+
+    # @magazine.build_attachment
   end
 
   # GET /magazines/1/edit
@@ -25,7 +28,7 @@ class MagazinesController < ApplicationController
   # POST /magazines.json
   def create
     @magazine = Magazine.new(magazine_params)
-
+    # @attachment = @magazine.attachments.build(params[:product])
     respond_to do |format|
       if @magazine.save
         format.html { redirect_to @magazine, notice: 'Magazine was successfully created.' }
@@ -69,6 +72,6 @@ class MagazinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def magazine_params
-      params.require(:magazine).permit(:title, :issue_date, :cover_image, :desc, :pages)
+      params.require(:magazine).permit(:title, :issue_date, :cover_image, :desc, :pages, attachments_attributes: [:file])
     end
 end

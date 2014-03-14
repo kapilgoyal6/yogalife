@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205122759) do
+ActiveRecord::Schema.define(version: 20140217051735) do
+
+  create_table "attachments", force: true do |t|
+    t.string   "file"
+    t.integer  "attachable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "attachable_type"
+  end
+
+  add_index "attachments", ["attachable_id"], name: "index_attachments_on_attachable_id"
 
   create_table "banners", force: true do |t|
     t.string   "image"
@@ -58,18 +68,21 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.datetime "updated_at"
   end
 
-  create_table "events", force: true do |t|
+  create_table "dogs", force: true do |t|
     t.string   "name"
-    t.string   "category"
-    t.string   "author"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.string   "image"
-    t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
   end
+
+  create_table "event_images", force: true do |t|
+    t.string   "file"
+    t.integer  "attachable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachable_type"
+  end
+
+  add_index "event_images", ["attachable_id"], name: "index_event_images_on_attachable_id"
 
   create_table "horoscopes", force: true do |t|
     t.string   "title"
@@ -79,12 +92,6 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.string   "logo"
     t.string   "background"
     t.text     "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "items", force: true do |t|
-    t.string   "e_mail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,12 +107,14 @@ ActiveRecord::Schema.define(version: 20140205122759) do
   end
 
   create_table "manage_advertisements", force: true do |t|
-    t.string   "right_add_image"
-    t.string   "right_url"
-    t.string   "mid_add_image"
-    t.string   "mid_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "top_image"
+    t.string   "top_url"
+    t.string   "mid_image"
+    t.string   "mid_url"
+    t.string   "bottom_image"
+    t.string   "bottom_url"
   end
 
   create_table "manage_articles", force: true do |t|
@@ -118,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_directories", force: true do |t|
@@ -146,6 +156,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "name"
+    t.string   "slug"
   end
 
   create_table "manage_follow_us", force: true do |t|
@@ -170,6 +181,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_greens", force: true do |t|
@@ -180,6 +192,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_heals", force: true do |t|
@@ -190,6 +203,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_news", force: true do |t|
@@ -199,6 +213,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_nourishes", force: true do |t|
@@ -210,6 +225,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_poses", force: true do |t|
@@ -220,6 +236,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_retreats", force: true do |t|
@@ -230,6 +247,7 @@ ActiveRecord::Schema.define(version: 20140205122759) do
     t.text     "desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "manage_teams", force: true do |t|
@@ -251,6 +269,23 @@ ActiveRecord::Schema.define(version: 20140205122759) do
 
   create_table "subscribers", force: true do |t|
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", force: true do |t|
+    t.string   "description"
+    t.integer  "dog_id"
+    t.string   "photo_file_name"
+    t.integer  "photo_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

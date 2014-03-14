@@ -14,7 +14,7 @@
  */
 
 
-body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:normal; color:#5a5a5a;  background: url(../../images/admin/middbg10.gif) repeat;}
+body {margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:normal; color:#5a5a5a;  background: url(../../images/middbg10.gif) repeat;}
 a, a:visited {outline:none; text-decoration:none; color:#008de5;}
 a:hover {text-decoration:underline;}
 input {font-family:Arial, Helvetica, sans-serif; font-size:12px; vertical-align:middle;}
@@ -27,8 +27,8 @@ form {margin:0 !important;}
 .vAlign {vertical-align:middle !important;}
 img {border:none;}
 
-.homeLogo { background:url(../../images/admin/header_bg.gif) repeat; text-align:center; padding:40px 0; border-bottom:1px solid #333333;}
-.lgoingOut .innerbg { background:url(../../images/admin/midle_bg.gif) no-repeat left top; width:980px; margin:auto; height:345px;}
+.homeLogo { background:url(../../images/header_bg.gif) repeat; text-align:center; padding:40px 0; border-bottom:1px solid #333333;}
+.lgoingOut .innerbg { background:url(../../images/midle_bg.gif) no-repeat left top; width:980px; margin:auto; height:345px;}
 .loginCon {width:363px; margin:auto; padding:70px 0 0 0;}
 .loginBox {background:#161718; border:1px solid #312f2f; -moz-border-radius:2px; -webkit-border-radius:2px; -khtml-border-radius:2px; border-radius:2px; padding-bottom:10px;}
 .loginHd {font-size:22px; color:#dbdbdb; padding:15px 0 15px 30px;}
@@ -55,7 +55,7 @@ ul#main-nav li ul li a:hover {color:#fff;}
 ul#main-nav li ul li a.current:link, ul#main-nav li ul li a.current:visited {color:#fff; background:url(../../images/admin/wht_aroww.gif) no-repeat right 3px;}
 
 .midRight {margin-left:230px;min-height: 700px; background:url('middbg10.gif');}
-.topPart {background:url(../../images/admin/top_bg.gif) repeat-x top; height:22px; color:#0088de; padding:8px 25px 0 25px;}
+.topPart {background:url(../../images/top_bg.gif) repeat-x top; height:22px; color:#0088de; padding:8px 25px 0 25px;}
 .topPart a, .topPart a:visited {color:#808080; text-decoration:none;}
 .topPart a:hover {text-decoration:underline;}
 .rightMid {padding-top:25px;min-height: 550px; margin-left: -200px;}
@@ -66,7 +66,7 @@ ul#main-nav li ul li a.current:link, ul#main-nav li ul li a.current:visited {col
 .dashbordLink a:hover {background:#fff; color:#ea9d0b; text-decoration:none;}
 
 .tableCon {border:1px solid #bdbcbd; background:#fff; margin-top:20px;}
-.formHdBox {background:url(../../images/admin/hd_bg.gif) repeat-x; height:32px; border-bottom:1px solid #bdbcbd;}
+.formHdBox {background:url(../../images/hd_bg.gif) repeat-x; height:32px; border-bottom:1px solid #bdbcbd;}
 .tableHd {text-transform:uppercase; color:#252223; font-size:18px; padding:5px 0 0 10px; float:left;}
 .selectCity {float:right; padding:5px;}
 .citySel {border:1px solid #9d9d9d; padding:2px; width:180px; color:#252223; font-size:12px;}
@@ -161,7 +161,7 @@ line-height:17px;
 .leftlink { width:auto;}
 .leftlink ul { padding:0; margin:0; list-style:none;}
 .leftlink ul li { padding-bottom:6px;}
-.leftlink ul li a { padding:12px 20px 0 26px; width:174px; height:28px; display:block; font-size:14px; color:#000000; font-weight:bold; text-transform:uppercase; background:url(../../images/admin/leftlinkbg.jpg) 0 0 no-repeat;}
+.leftlink ul li a { padding:12px 20px 0 26px; width:174px; height:28px; display:block; font-size:14px; color:#000000; font-weight:bold; text-transform:uppercase; background:url(../../images/leftlinkbg.jpg) 0 0 no-repeat;}
 .leftlink ul li a:hover, .leftlink ul li a.sel { text-decoration:none; color:#ffffff; background:url(../../images/admin/leftlinkbg_hover.jpg) 0 0 no-repeat;}
 .blueHd { padding-bottom:16px; font-size:19px; color:#0d83dd; font-family:"Trebuchet MS"; text-transform:uppercase; font-weight:normal;}
 .mapbox { width:auto; border:1px solid #bbbbbb;}
@@ -382,9 +382,22 @@ background: url("../../images/admin/clear-btn.png") repeat-x scroll 0 0 transpar
 input[type=text]{
   background: url("") repeat-x scroll center bottom #FFFFFF;
     border: 1px solid #5879AB;
-    height: 26px;
-   width: 208px;
-	line-height: 26px;
+    height: 15px;
+   width: 215px;
+	/*line-height: 26px;*/
+	border-radius: 3px;
+	padding: 8px;
+}
+
+
+input[type=password]{
+  /*background: url("") repeat-x scroll center bottom #FFFFFF;*/
+    border: 1px solid #5879AB;
+    height: 15px;
+   width: 215px;
+	/*line-height: 26px;*/
+	border-radius: 3px;
+	padding: 8px;
 }
 
 
@@ -397,11 +410,13 @@ input[type="submit"]
 
 
 select{
-  background: url("") repeat-x scroll center bottom #FFFFFF;
+  /*background: url("") repeat-x scroll center bottom #FFFFFF;*/
     border: 1px solid #5879AB;
-    height: 26px;
-   width: 150px;
-  line-height: 26px;
+    height: 32px;
+   width: 232px;
+	line-height: 26px;
+	border-radius: 3px;
+	/*padding: 8px;*/
 }
 
 

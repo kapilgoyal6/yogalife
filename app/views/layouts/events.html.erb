@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <title>Yogalife</title>
+
+
+  <%= stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "home", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.core", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.slider", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "jssor.utils", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "social", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+
+<%= stylesheet_link_tag    "calendar", media: "all", "data-turbolinks-track" => true %>
+ 
+  
+</head>
+<body>
+<% @manage_advertisement = ManageAdvertisement.find_by_id(3) %>
+
+<div class="mainCon">
+	<div class="topBanner"><%= link_to image_tag(@manage_advertisement.top_image), @manage_advertisement.top_url %></div>
+	<!-- Header section -->
+	<!--Start Header -->
+  <header class="header">
+  	<div class="fl">
+      <div class="logo"><a href="/home"><%= image_tag "logo.png" %></a></div>
+      <div class="logoTxt">yoga and inspired living in the middle east</div>
+    </div>
+    <div class="headerRight">
+    	<ul class="topLink">
+      	<li><a href="/mag">Magazine</a></li>
+      	<li><a href="#">Store</a></li>
+      	<li><a href="/contact">Contact</a></li>
+        <li class="search"><a href="javascript:void(0)" class="searchL"><i class="searchIcon"></i></a>
+        	<div class="searchBox" id="searchD">
+            <div class="searchInputbox">
+              <form action="/index/search" method="POST">
+                <input type="text" name="str" class="searchInput" value="Search Keyword" onfocus="clearText(this)" onblur="replaceText(this)">
+                <input type="image" src="/images/calender_next_arrow.gif">
+              </form>
+            <!-- <gcse:search></gcse:search> -->
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="topFollow">
+        <a href="http://www.twitter.com" class="twitter" target="_blank">&nbsp;</a>
+        <a href="http://www.facebook.com" class="facebook" target="_blank">&nbsp;</a>
+        <a href="http://www.youtube.com" class="youtube" target="_blank">&nbsp;</a>
+      </div>
+    </div>
+    <div class="clr"></div>
+  </header>
+  <!--End Header -->
+	<!--Start Tab -->
+  <nav class="tab">
+  	<a class="mobLemuL" href="javascript:void(0)"><%= image_tag("mob_menu_bg.gif") %></a>
+    <ul id="menu">
+    	<li><a href="/" class="sel">Home</a></li>
+	  	<li><a href="/pose/index" class="a">Pose</a>
+				<ul class="submenu">
+				 	<li><a href="/pose/pranayama">Pranayama</a></li>
+				 	<li><a href="/pose/community">Community</a></li>
+				 	<li><a href="/pose/asanas_and_sequences">Asanas and sequences</a></li>
+				 	<li><a href="/pose/pilates">Pilates</a></li>
+				 	<li><a href="/pose/yoga">Yoga</a></li>
+        </ul>
+			</li>
+      <li class=""><a href="/nourish/index" class="">Nourish</a>
+	  		<ul class="submenu" style="display: none;">
+				 	<li><a href="/nourish/restaurants_and_cafes">Restaurants and cafes</a></li>
+				 	<li><a href="/nourish/recipes">Recipes</a></li>
+				 	<li><a href="/nourish/nutrition">Nutrition</a></li>
+        </ul>
+      </li>
+    	<li class=""><a href="/heal/index" class="">Heal</a>
+				<ul class="submenu" style="display: none;">
+				 	<li class=""><a href="/heal/spirit">Spirit</a></li>
+				 	<li class=""><a href="/heal/mind">Mind</a></li>
+				 	<li class=""><a href="/heal/body">Body</a></li>
+        </ul>
+	  	</li>
+    	<li class=""><a href="/glow/index" class="">Glow</a>
+				<ul class="submenu" style="display: none;">
+				 	<li><a href="/glow/reviews">Reviews</a></li>
+				 	<li><a href="/glow/haircare">Haircare</a></li>
+				 	<li><a href="/glow/skincare">Skincare</a></li>
+        </ul>
+	  	</li>
+    	<li class=""><a href="/retreat/index" class="">Retreat</a>
+				<ul class="submenu" style="display: none;">
+				 	<li><a href="/retreat/international">International</a></li>
+				 	<li><a href="/retreat/local">Local</a></li>
+        </ul>
+	  	</li>
+  		<li class=""><a href="/green/index" class="">Green</a>
+				<ul class="submenu" style="display: none;">
+				 	<li class=""><a href="/green/living_green">Living Green</a></li>
+				 	<li class=""><a href="/green/planet_earth">Planet Earth</a></li>
+        </ul>
+	  	</li>
+    	<li><a href="/events" class="">Events</a></li>
+  		<li><a href="/directory" class="">Directory</a></li>
+      <li class=""><a href="/about" class="">About</a></li>
+    </ul>
+
+		<ul id="menuMob">
+    	<li><a href="/" class="sel">Home</a></li>
+    	<li><a href="/pose/index" class="">Pose</a></li>
+    	<li><a href="/nourish/index" class="">Nourish</a></li>
+    	<li><a href="/heal/index" class="">Heal</a></li>
+    	<li><a href="/glow/index" class="">Glow</a></li>
+    	<li><a href="/retreat/index" class="">Retreat</a></li>
+    	<li><a href="/green/index" class="">Green</a></li>
+    	<li><a href="/events" class="">Events</a></li>
+    	<li><a href="/directory" class="">Directory</a></li>
+     	<li><a href="/about" class="">About</a></li>
+    </ul>
+  </nav>
+
+
+
+<section class="midCon clearfix">
+<aside class="midLeft">
+<%= yield %>
+
+<!-- TERMS -->
+  <div class="clearfix">
+    <div class="yogalife">
+      <h2>Yogalife</h2>
+      <div>
+        <%= @cm.find_by_id(8) do |cm| %>
+          <%= sanitize(cm.page_content) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="sitemap clearfix">
+      <h2>Sitemap</h2>
+      <ul class="sitemapLink">
+        <li><a href="/pose/index">POSE</a></li>
+        <li><a href="/retreat/index">RETREAT</a></li>
+        <li><a href="/events">EVENTS</a></li>
+        <li><a href="/nourish/index">NOURISH</a></li>
+        <li><a href="/green/index">GREEN</a></li>
+        <li><a href="/mag">MAGAZINE</a></li>
+        <li><a href="/heal/index">HEAL</a></li>
+        <li><a href="/directory">DIRECTORY</a></li>
+        <li><a href="/horos">HOROSCOPES</a></li>
+        <li><a href="#">CONTRIBUTE</a></li>
+        <li><a href="/glow/index">GLOW</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li><a href="/article">ARTICLE</a></li>
+        <li><a href="/news">News</a></li>
+      </ul>
+    </div>
+
+  </div>
+</aside>
+
+<aside class="midRight">
+
+  <!--Calender -->
+  <%= raw(event_calendar) %>
+  <!-- END CALENDAR -->
+  <br>
+  <br>
+
+
+  <div class="rightLinks">
+    <h2>DATES</h2>
+    <ul>
+      <li>
+        <%= link_to "ALL DATES (#{ManageEvent.count})" , :controller => 'events', :action => 'sort_by', :id => 'all_dates' %>
+      </li>
+                    
+      <li>
+      <%= link_to "TODAY (#{ManageEvent.where("DATE(start_at) = ?", Date.today).count})" , :controller => 'events', :action => 'sort_by', :id => 'today' %>
+      </li>
+                    
+      <li>
+       <%= link_to "TOMORROW (#{ManageEvent.where("DATE(start_at) = ?", Date.tomorrow).count})" , :controller => 'events', :action => 'sort_by', :id => 'tomorrow' %>
+      </li>
+                    
+      <li>
+       <%= link_to "THIS WEEK (#{ManageEvent.count(:conditions => {:start_at => (Date.today.beginning_of_week..Date.today.end_of_week)})})" , :controller => 'events', :action => 'sort_by', :id => 'this_week' %>
+      </li>
+                    
+      <li>
+       <%= link_to "THIS WEEKEND (#{ManageEvent.count(:conditions => {:start_at => (Date.today.sunday - 1.days..Date.today.sunday + 1.days)})})" , :controller => 'events', :action => 'sort_by', :id => 'this_week_end' %>
+      </li>
+                    
+      <li>
+       <%= link_to "NEXT WEEK (#{ManageEvent.count(:conditions => {:start_at => (Date.today.sunday + 1.days..Date.today.sunday + 7.days)})})" , :controller => 'events', :action => 'sort_by', :id => 'next_week' %>
+      </li>
+      
+      <li>
+       <%= link_to "THIS MONTH (#{ManageEvent.count(:conditions => {:start_at => (Date.today.beginning_of_month..Date.today.end_of_month)})})" , :controller => 'events', :action => 'sort_by', :id => 'this_month' %>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="rightLinks">
+    <h2>CATEGORIES</h2>
+    <ul>
+      <li>
+        <%= link_to "ALL CATEGORIES (#{ManageEvent.count})" , :controller => 'events', :action => 'category', :id => 'all' %>
+      </li>
+      <li>
+        <%= link_to "CLASSES (#{ManageEvent.count(:conditions => {:category => "Classes"})})" , :controller => 'events', :action => 'category', :id => 'class' %>
+      </li>
+      <li>
+        <%= link_to "CONFERENCES (#{ManageEvent.count(:conditions => {:category => "Conferences"})})" , :controller => 'events', :action => 'category', :id => 'conference' %>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  <!-- ┌──────────┐ -->
+  <!-- │NEWSLETTER│ -->
+  <!-- └──────────┘ -->
+  <div class="botSpace">
+    <h1>NEWSLETTER</h1>
+    <div>
+      <div class="qadTxt">Sign up for our monthly newsletter</div>
+      <div class="qadInputBox">
+        <%= form_for @subscriber, :remote => true do |f| %>
+          <%= f.text_field :email, id: 'newsltr', class: 'qadInput', :value => "Email Address", :onfocus => "clearText(this)", :onblur => "replaceText(this)" %>
+          <%= image_submit_tag("", class: 'messageBtn', :onclick => "validate(this);") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+
+  <!-- ┌──────────────┐ -->
+  <!-- │FOLLOW TWITTER│ -->
+  <!-- └──────────────┘ -->
+  <div class="twitterCon">
+    <h1 class="twitterBird">FOLLOW US ON FOR Mind, Body &amp; SPIRIT UPDATES</h1>
+    <ul class="twitterBox">
+      <a class="twitter-timeline" href="https://twitter.com/Flexsin_Flex" data-widget-id="438255974235648000">Tweets by @Flexsin_Flex</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </ul>
+  </div>
+  <div class="clr"></div>
+
+
+  <!-- ┌────────────┐ -->
+  <!-- │RIGHT BANNER│ -->
+  <!-- └────────────┘ -->
+  <div class="rightBanner"><%= link_to image_tag(@manage_advertisement.mid_image), @manage_advertisement.mid_url %></div>
+  <div class="clr"></div>
+
+
+  <!-- ┌─────────┐ -->
+  <!-- │FOLLOW US│ -->
+  <!-- └─────────┘ -->
+  <div class="botSpace">
+    <h1>Follow us</h1>
+    <div class="followUs">
+      <a href="http://www.twitter.com" target="_blank" class="twitter">&nbsp;</a>
+      <a href="http://www.facebook.com" target="_blank" class="facebook">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="youtube">&nbsp;</a>
+      <a href="http://www.google.com" target="_blank" class="gplus">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="ping">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="vimeo">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="tumbir">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="rss">&nbsp;</a>
+      <a href="http://www.youtube.com" target="_blank" class="flickr">&nbsp;</a>
+    </div>
+  </div>
+  <div class="clr"></div>
+
+</aside>
+</section>
+
+
+<!-- ┌──────┐ -->
+<!-- │FOOTER│ -->
+<!-- └──────┘ -->
+<footer class="footer">
+  Copyright © Yoga Life, 2013. All Rights Reserved.
+  <span>Web design by GO-Gulf.com</span>
+</footer>
+
+
+
+
+</div>
+
+</body>
+</html>

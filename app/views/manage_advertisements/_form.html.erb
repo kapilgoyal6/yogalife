@@ -15,27 +15,39 @@
   <div class="left">
 
   <div class="label">
-    <%= f.label :right_add_image %>
+    <%= f.label :top_image, 'Top Add Image' %>
   </div>
-    <%= f.file_field :right_add_image %>
+    <%= f.file_field :top_image %> Size must be minimum 928*90 and max 400*300
   <div class="clr"></div><br>
 
   <div class="label">
-    <%= f.label :right_url %>
+    <%= f.label :top_url, 'Top Add URL' %>
   </div>
-    <%= f.text_field :right_url %> Please enter the URL in the format: http://www.google.com
+    <%= f.text_field :top_url %> Please enter the URL in the format: http://www.google.com
   <div class="clr"></div><br>
 
   <div class="label">
-    <%= f.label :mid_add_image %>
+    <%= f.label :mid_image, 'Mid Add Image' %>
   </div>
-    <%= f.file_field :mid_add_image %>
+    <%= f.file_field :mid_image %> Size must be minimum 303*234 and max 400*300
   <div class="clr"></div><br>
 
   <div class="label">
-    <%= f.label :mid_url %>
+    <%= f.label :mid_url, 'Mid Add URL' %>
   </div>
     <%= f.text_field :mid_url %> Please enter the URL in the format: http://www.google.com
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :bottom_image, 'Bottom Add Image' %>
+  </div>
+    <%= f.file_field :bottom_image %> Size must be minimum 774*100 and max 800*200
+  <div class="clr"></div><br>
+
+  <div class="label">
+    <%= f.label :bottom_url, 'Bottom Add URL' %>
+  </div>
+    <%= f.text_field :bottom_url %> Please enter the URL in the format: http://www.google.com
   <div class="clr"></div><br>
 
   <div class="actions">

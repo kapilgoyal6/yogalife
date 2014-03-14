@@ -10,6 +10,7 @@ before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
 	    @subscriber = Subscriber.new(subscriber_params)
 	    respond_to do |format|
 		  if @subscriber.save
+		  	SubscriptionMailer.send_email(@subscriber).deliver
 		    format.html { redirect_to :back, flash[:notice] = "Thanks for your interest! We'll let you know when the app is in beta." }
 		    format.js
 		  else

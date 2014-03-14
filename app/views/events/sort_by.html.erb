@@ -1,0 +1,73 @@
+<% n =  params[:page] %>
+<% all_dates = "/sort_by/all_dates?page=#{n}" %>
+<% today = "/sort_by/today?page=#{n}" %>
+<% tomorrow = "/sort_by/tomorrow?page=#{n}" %>
+<% this_week = "/sort_by/this_week?page=#{n}" %>
+<% this_week_end = "/sort_by/this_week_end?page=#{n}" %>
+<% next_week = "/sort_by/next_week?page=#{n}" %>
+<% this_month = "/sort_by/this_month?page=#{n}" %>
+
+
+<% if (request.fullpath == all_dates)||(request.fullpath == '/sort_by/all_dates')  %>
+	<% @sort = ManageEvent.order('updated_at DESC').page(params[:page]).per(6) %>
+	<% filter = 'All Dates' %>
+
+<% elsif (request.fullpath == today)||(request.fullpath == '/sort_by/today')  %>
+	<% @sort = ManageEvent.where("DATE(start_at) = ?", Date.today).page(params[:page]).per(6) %>
+	<% filter = 'Today' %>
+
+<% elsif (request.fullpath == tomorrow)||(request.fullpath == '/sort_by/tomorrow')  %>
+	<% @sort = ManageEvent.where("DATE(start_at) = ?", Date.tomorrow).page(params[:page]).per(6) %>
+	<% filter = 'Tomorrow' %>
+
+<% elsif (request.fullpath == this_week)||(request.fullpath == '/sort_by/this_week')  %>
+	<% @sort = Kaminari.paginate_array(ManageEvent.all(:conditions => {:start_at => (Date.today.beginning_of_week..Date.today.end_of_week)})).page(params[:page]).per(6) %>
+	<% filter = 'This Week' %>
+
+<% elsif (request.fullpath == this_week_end)||(request.fullpath == '/sort_by/this_week_end')  %>
+	<% @sort = Kaminari.paginate_array(ManageEvent.all(:conditions => {:start_at => (Date.today.sunday - 1.days..Date.today.sunday + 1.days)})).page(params[:page]).per(6) %>
+	<% filter = 'This Weekend' %>
+
+<% elsif (request.fullpath == next_week)||(request.fullpath == '/sort_by/next_week')  %>
+	<% @sort = Kaminari.paginate_array(ManageEvent.all(:conditions => {:start_at => (Date.today.sunday + 1.days..Date.today.sunday + 7.days)})).page(params[:page]).per(6) %>
+	<% filter = 'Next Week' %>
+
+<% elsif (request.fullpath == this_month)||(request.fullpath == '/sort_by/this_month')  %>
+	<% @sort = Kaminari.paginate_array(ManageEvent.all(:conditions => {:start_at => (Date.today.beginning_of_month..Date.today.end_of_month)})).page(params[:page]).per(6) %>
+	<% filter = 'This Month' %>
+
+<% end %>
+
+
+<div class="bradcrumb">
+	<a href="/">Home</a><a href="/events">Events</a><span><%= filter %></span>
+</div>
+
+	<div>
+	    <ul class="articleBox">
+	        <% @sort.each do |event| %>
+	            <li>
+	                <div class="articleLeft">
+	                    <% if event.event_image.present? %>
+	                        <%= link_to image_tag(event.event_image, :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.slug %>
+	                    <% else %>
+	                        <%= link_to image_tag("default_image.gif", :height => 150), :controller => 'home', :action => 'eventdetail', :id => event.slug %>
+	                    <% end %>
+	                </div>
+	                <div class="articleRight">
+	                    <div class="hd"><%= link_to event.name, :controller => 'home', :action => 'eventdetail', :id => event.slug %></div>
+	                    <div class="by">
+	                        <% if event.start_at.present? %>
+	                            <%= event.start_at.strftime("%b %d") %> - <%= event.end_at.strftime("%b %d") %>
+	                        <% else %>
+	                        <% end %>
+	                    </div>
+	                    <div><%= truncate(raw(sanitize(event.desc) ), :length => 250 )%></div>
+	                    </div>
+	                <div class="clr"></div>
+	            </li>
+	        <% end %>
+	    </ul>
+	</div>
+
+<%= paginate @sort %>
