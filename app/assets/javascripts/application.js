@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_nested_form
-//= require ckeditor/override
 //= require ckeditor/init
 //= require turbolinks
 //= require_tree .

@@ -1,6 +1,8 @@
 Yogalife::Application.routes.draw do
 
 
+devise_for :yogas, :controllers => { :omniauth_callbacks => "yogas/omniauth_callbacks" }
+
 get 'sort_by(/:id)', :controller => 'events',  :action => 'sort_by'
 get 'category(/:id)', :controller => 'events',  :action => 'category'
   # get "events/sort_by"
@@ -22,7 +24,7 @@ post '/admin', :controller => 'admin',  :action => 'admin'
 
 # root :to => "users#new"
 # resources :users
-resources :sessions
+#resources :sessions
 
 
   # get "sessions/new"
@@ -213,5 +215,5 @@ get 'viewarticle(/:id)', :controller => 'home',  :action => 'viewarticle'
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get '*rest' => "home#routing"
+  # get '*rest' => "home#routing"
 end

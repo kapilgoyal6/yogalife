@@ -40,6 +40,9 @@
     </div>
     <div class="headerRight">
     	<ul class="topLink">
+      <% if yoga_signed_in? %>
+        <li><%= link_to 'Signout', destroy_yoga_session_path, method: :delete %></li>
+      <% end %>
       	<li><a href="/mag">Magazine</a></li>
       	<li><a href="#">Store</a></li>
       	<li><a href="/contact">Contact</a></li>

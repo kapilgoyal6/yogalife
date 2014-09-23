@@ -10,119 +10,19 @@
 	<%= javascript_include_tag "jrails1/fullcalendar.js","jrails1/jquery-ui.js","jrails1/gcal.js","jrails1/jrails.js","jrails1/jquery.validate.js"%>
 
 	
-
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 
-<!-- <div id="user_nav">
-  <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log out", log_out_path %>
-  <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    
-  <% end %>
-</div>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %> -->
-
-<% if current_user %>
-Logged in as <%= current_user.email %>
-<% end %>
-<div class="mainCon">
-	<div class="midLeft">
-        <div class="topLink"><a href="/home">View the Site</a>|<%= link_to "Log out", log_out_path %>
-        </div>
-        <div id="sidebar">
-        	<div id="sidebar-wrapper">
-	            <ul id="main-nav">
-	            	<li><a href="/admin" class="nav-top-item " style="">Dashboard</a>
-						<ul style="display: none;">
-		                    <li><a href="admin">Admin Dashboard</a></li>
-		             	</ul>
-	             	</li>
-				 	<li><a href="" class="nav-top-item " style="padding-right: 15px;">Admin Account Setting</a>
-	                	<ul style="display: none;">
-	                        <li><a href="#">Edit Profile</a></li>
-	                        <li><a href="#">Change Password</a></li>
-	                    </ul>
-	                </li>
-	                <li><a href="" class="nav-top-item " style="padding-right: 15px;">Content Management System</a>
-						<ul style="display: none;">
-		                        <li><a href="/cms">CMS Page</a></li>
-		                </ul>
-	                </li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Horoscopes</a>
-						<ul style="display: none;">
-							<li><a href="/horoscopes">Monthly Horoscopes</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Manage</a>
-						<ul style="display: none;">
-							<li><a href="/manage_news">News</a></li>
-							<li><a href="/manage_poses">Pose</a></li>
-							<li><a href="/manage_events">Event</a></li>
-							<li><a href="/manage_directories">Directory</a></li>
-							<li><a href="/manage_teams">Team</a></li>
-							<li><a href="/manage_heals">Heal</a></li>
-							<li><a href="/manage_articles">Article</a></li>
-							<li><a href="/manage_nourishes">Nourish</a></li>
-							<li><a href="/manage_glows">Glow</a></li>
-							<li><a href="/manage_retreats">Retreat</a></li>
-							<li><a href="/manage_greens">Green</a></li>
-							<li><a href="/manage_advertisements">Advertisement</a></li>
-							<li><a href="manage_follow_us">Follow Us</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Newsletter</a>
-						<ul style="display: none;">
-							<li><a href="/subscribers">Subscribers</a></li>
-							<li><a href="#">Groups</a></li>
-							<li><a href="#">Newsletters</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item" style="padding-right: 15px;">Manage Category & Sub Category</a>
-						<ul style="display: none;">
-							<li><a href="/subcategories">Sub Category</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Magazine Management</a>
-						<ul style="display: none;">
-							<li><a href="/magazines">View Magazine</a></li>
-							<li><a href="/magazines/new">Add Magazine</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Manage Country & City</a>
-						<ul style="display: none;">
-							<li><a href="/countries">Country</a></li>
-							<li><a href="/cities">City</a></li>
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Banner Management</a>
-						<ul style="display: none;">
-							<li><a href="/banners">Banner Listing</a></li>			
-						</ul>
-					</li>
-					<li><a href="" class="nav-top-item " style="padding-right: 15px;">Where To Buy</a>
-						<ul style="display: none;">
-							<li><a href="/wheretobuys">Where To Buy</a></li>			
-						</ul>
-					</li>
-	            </ul>
-            </div>
-        </div>
-    </div>	
-    <div class="midRight">
-    	<div class="topPart"><strong>Welcome!</strong> Admin</div>
 	<%= yield %>
-	<div class="footer">© 2013 YogaLife.com. All Rights Reserved.</div>
+	<div class="footer">© 2013 YogaLife.com. All Rights Reserved.<!-- </div>
     </div>    
-</div>
+</div> -->
 
 
 </body>
